@@ -1,55 +1,52 @@
-package org.wang.sms.model;
+package org.wang.sms.command;
 
-import java.io.Serializable;
+import java.text.SimpleDateFormat;
 
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.MappedSuperclass;
-import javax.persistence.Transient;
-
 
 /**
- * Created by Yang Wang on 16/2/15.
+ * Created by Yang Wang on 16/2/18.
  *
  * @author   <a href="mailto:chenglong.du@ozstrategy.com">Chenglong Du</a>
- * @version  03/08/2016 12:04
+ * @version  06/13/2016 14:45
  */
-@MappedSuperclass public abstract class User implements Serializable {
+public class BaseCommand {
+  //~ Static fields/initializers ---------------------------------------------------------------------------------------
+
+  /** TODO: DOCUMENT ME! */
+  protected static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
   //~ Instance fields --------------------------------------------------------------------------------------------------
 
   /** TODO: DOCUMENT ME! */
-  @Column protected Integer age;
+  protected Integer age;
 
   /** TODO: DOCUMENT ME! */
-  @Column protected Date birthDate;
+  protected Date birthDate;
 
   /** TODO: DOCUMENT ME! */
-  @Transient protected String birthDateString;
+  protected String birthDateString;
 
   /** TODO: DOCUMENT ME! */
-  @Column protected String gender = "male";
+  protected String gender = "male";
 
   /** TODO: DOCUMENT ME! */
-  @Column(length = 18)
+  protected Integer id;
+
+  /** TODO: DOCUMENT ME! */
   protected String IDCardNumber;
 
   /** TODO: DOCUMENT ME! */
-  @Column(
-    length   = 12,
-    nullable = false
-  )
   protected String name;
 
   /** TODO: DOCUMENT ME! */
-  @Column(
-    length   = 16,
-    nullable = false
-  )
   protected String passWord;
 
   /** TODO: DOCUMENT ME! */
-  @Column(length = 11)
+  protected String passWordValidator;
+
+  /** TODO: DOCUMENT ME! */
   protected String phoneNumber;
 
   //~ Methods ----------------------------------------------------------------------------------------------------------
@@ -99,6 +96,17 @@ import javax.persistence.Transient;
   //~ ------------------------------------------------------------------------------------------------------------------
 
   /**
+   * getter method for id.
+   *
+   * @return  Integer
+   */
+  public Integer getId() {
+    return id;
+  }
+
+  //~ ------------------------------------------------------------------------------------------------------------------
+
+  /**
    * getter method for IDCard number.
    *
    * @return  String
@@ -127,6 +135,17 @@ import javax.persistence.Transient;
    */
   public String getPassWord() {
     return passWord;
+  }
+
+  //~ ------------------------------------------------------------------------------------------------------------------
+
+  /**
+   * getter method for pass word validator.
+   *
+   * @return  String
+   */
+  public String getPassWordValidator() {
+    return passWordValidator;
   }
 
   //~ ------------------------------------------------------------------------------------------------------------------
@@ -187,6 +206,17 @@ import javax.persistence.Transient;
   //~ ------------------------------------------------------------------------------------------------------------------
 
   /**
+   * setter method for id.
+   *
+   * @param  id  Integer
+   */
+  public void setId(Integer id) {
+    this.id = id;
+  }
+
+  //~ ------------------------------------------------------------------------------------------------------------------
+
+  /**
    * setter method for IDCard number.
    *
    * @param  IDCardNumber  String
@@ -220,6 +250,17 @@ import javax.persistence.Transient;
   //~ ------------------------------------------------------------------------------------------------------------------
 
   /**
+   * setter method for pass word validator.
+   *
+   * @param  passWordValidator  String
+   */
+  public void setPassWordValidator(String passWordValidator) {
+    this.passWordValidator = passWordValidator;
+  }
+
+  //~ ------------------------------------------------------------------------------------------------------------------
+
+  /**
    * setter method for phone number.
    *
    * @param  phoneNumber  String
@@ -227,4 +268,5 @@ import javax.persistence.Transient;
   public void setPhoneNumber(String phoneNumber) {
     this.phoneNumber = phoneNumber;
   }
-} // end class User
+
+} // end class BaseCommand

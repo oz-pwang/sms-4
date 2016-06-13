@@ -1,74 +1,69 @@
 package org.wang.sms.service;
 
-import javax.annotation.Resource;
+import java.util.List;
 
-import org.springframework.context.annotation.Bean;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
 
-import org.wang.sms.model.User;
-import org.wang.sms.repository.UserDao;
+import org.wang.sms.model.Clazz;
+import org.wang.sms.repository.ClazzDao;
 
 
 /**
- * Created by ozintel06 on 16/5/16.
+ * Created by Yang Wang on 16/3/4.
  *
  * @author   <a href="mailto:chenglong.du@ozstrategy.com">Chenglong Du</a>
- * @version  05/17/2016 16:02
+ * @version  06/13/2016 14:41
  */
-@Service public class UserService {
+@Service public class ClazzService {
   //~ Instance fields --------------------------------------------------------------------------------------------------
 
-  /** TODO: DOCUMENT ME! */
-  @Resource UserDao userDao;
+  @Autowired private ClazzDao clazzDao;
 
   //~ Methods ----------------------------------------------------------------------------------------------------------
 
   /**
-   * delete.
+   * find.
    *
-   * @param  user  User
+   * @param   id  Integer
+   *
+   * @return  Clazz
    */
-  public void delete(User user) {
-    userDao.delete(user);
+  public Clazz find(Integer id) {
+    return clazzDao.find(id);
   }
 
   //~ ------------------------------------------------------------------------------------------------------------------
 
   /**
-   * findByEmail.
+   * List.
    *
-   * @param   email  String
-   *
-   * @return  User
+   * @return  List
    */
-  public User findByEmail(String email) {
-    return userDao.findByEmail(email);
+  public List<Clazz> List() {
+    return clazzDao.list();
   }
 
   //~ ------------------------------------------------------------------------------------------------------------------
 
   /**
-   * findOne.
+   * list.
    *
-   * @param   id  long
-   *
-   * @return  User
+   * @return  List
    */
-  public User findOne(long id) {
-    return userDao.findOne(id);
+  public List<Clazz> list() {
+    return clazzDao.list();
   }
 
   //~ ------------------------------------------------------------------------------------------------------------------
 
   /**
-   * save.
+   * setter method for clazz dao.
    *
-   * @param   user  User
-   *
-   * @return  User
+   * @param  clazzDao  ClazzDao
    */
-  public User save(User user) {
-    return userDao.save(user);
+  public void setClazzDao(ClazzDao clazzDao) {
+    this.clazzDao = clazzDao;
   }
-} // end class UserService
+} // end class ClazzService
