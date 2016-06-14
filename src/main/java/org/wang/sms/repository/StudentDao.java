@@ -2,6 +2,7 @@ package org.wang.sms.repository;
 
 import java.util.List;
 
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 import org.springframework.stereotype.Repository;
@@ -15,28 +16,8 @@ import org.wang.sms.model.Student;
  * @author   <a href="mailto:chenglong.du@ozstrategy.com">Chenglong Du</a>
  * @version  06/13/2016 14:41
  */
-@Repository public interface StudentDao extends CrudRepository {
+@Repository public interface StudentDao extends CrudRepository<Student,Integer> {
   //~ Methods ----------------------------------------------------------------------------------------------------------
-
-  /**
-   * add.
-   *
-   * @param   student  Student
-   *
-   * @return  Integer
-   */
-  Integer add(Student student);
-
-  //~ ------------------------------------------------------------------------------------------------------------------
-
-  /**
-   * find.
-   *
-   * @param   id  Integer
-   *
-   * @return  Student
-   */
-  Student find(Integer id);
 
   //~ ------------------------------------------------------------------------------------------------------------------
 
@@ -48,35 +29,19 @@ import org.wang.sms.model.Student;
    *
    * @return  Student
    */
-  Student find(String username, String password);
+  Student findByNameAndPassWord(String username, String password);
 
   //~ ------------------------------------------------------------------------------------------------------------------
 
   /**
    * findClazz.
    *
-   * @param   id  Integer
+   * @param   clazzId  Integer
    *
    * @return  List
    */
-  List<Student> findClazz(Integer id);
+@Query("from Student as s where s.clazz.id = clazzId")
+  List<Student> findStudentByClazzId(Integer clazzId);
 
-  //~ ------------------------------------------------------------------------------------------------------------------
-
-  /**
-   * list.
-   *
-   * @return  List
-   */
-  List<Student> list();
-
-  //~ ------------------------------------------------------------------------------------------------------------------
-
-  /**
-   * update.
-   *
-   * @param  student  Student
-   */
-  void update(Student student);
 
 } // end interface StudentDao

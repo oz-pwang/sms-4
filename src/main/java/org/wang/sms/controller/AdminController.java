@@ -42,7 +42,7 @@ public class AdminController {
    */
   @RequestMapping(value = "/menu")
   public String menu(HttpServletRequest request, HttpServletResponse response, Integer id, Model model) {
-    Admin admin = adminService.find(id);
+    Admin admin = adminService.findOne(id);
     model.addAttribute("user", admin);
 
     return "/admin/menu";

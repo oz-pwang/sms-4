@@ -52,7 +52,7 @@ import org.wang.sms.until.Constants;
   )
   public String login(HttpServletRequest request, LoginFormCommand loginForm) {
     if ("STUDENT".equals(loginForm.getRole())) {
-      Student student = studentService.find(loginForm.getUsername(), loginForm.getPassword());
+      Student student = studentService.findByNameAndPassWord(loginForm.getUsername(), loginForm.getPassword());
 
       if (student != null) {
         request.getSession().setAttribute(Constants.USER_NAME_KEY, student.getName());
@@ -65,7 +65,7 @@ import org.wang.sms.until.Constants;
     }
 
     if ("TEACHER".equals(loginForm.getRole())) {
-      Teacher teacher = teacherService.find(loginForm.getUsername(), loginForm.getPassword());
+      Teacher teacher = teacherService.findByNameAndPassWord(loginForm.getUsername(), loginForm.getPassword());
 
       if (teacher != null) {
         request.getSession().setAttribute(Constants.USER_NAME_KEY, teacher.getName());
@@ -78,7 +78,7 @@ import org.wang.sms.until.Constants;
     }
 
     if ("ADMIN".equals(loginForm.getRole())) {
-      Admin admin = adminService.find(loginForm.getUsername(), loginForm.getPassword());
+      Admin admin = adminService.findByNameAndPassWord(loginForm.getUsername(), loginForm.getPassword());
 
       if (admin != null) {
         return "redirect:/admin/menu?id=" + admin.getId();

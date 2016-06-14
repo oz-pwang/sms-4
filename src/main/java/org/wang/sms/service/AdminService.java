@@ -1,26 +1,16 @@
 package org.wang.sms.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
-import org.springframework.stereotype.Service;
-
 import org.wang.sms.model.Admin;
-import org.wang.sms.repository.AdminDao;
 
 
 /**
  * Created by Yang Wang on 16/3/4.
  *
  * @author   <a href="mailto:chenglong.du@ozstrategy.com">Chenglong Du</a>
- * @version  06/13/2016 14:41
+ * @version  06/13/2016 15:16
  */
-@Service public class AdminService {
-  //~ Instance fields --------------------------------------------------------------------------------------------------
-
-  @Autowired private AdminDao adminDao;
-
+public interface AdminService {
   //~ Methods ----------------------------------------------------------------------------------------------------------
-
 
   /**
    * find.
@@ -29,9 +19,7 @@ import org.wang.sms.repository.AdminDao;
    *
    * @return  Admin
    */
-  public Admin find(Integer id) {
-    return adminDao.find(id);
-  }
+  Admin findOne(Integer id);
 
   //~ ------------------------------------------------------------------------------------------------------------------
 
@@ -43,19 +31,5 @@ import org.wang.sms.repository.AdminDao;
    *
    * @return  Admin
    */
-  public Admin find(String username, String password) {
-    return adminDao.find(username, password);
-  }
-
-  //~ ------------------------------------------------------------------------------------------------------------------
-
-
-  /**
-   * setter method for admin dao.
-   *
-   * @param  adminDao  AdminDao
-   */
-  public void setAdminDao(AdminDao adminDao) {
-    this.adminDao = adminDao;
-  }
-} // end class AdminService
+  Admin findByNameAndPassWord(String username, String password);
+}

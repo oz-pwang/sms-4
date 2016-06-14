@@ -14,6 +14,7 @@ import org.hibernate.dialect.MySQL5Dialect;
 import org.springframework.beans.factory.annotation.Qualifier;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
@@ -41,10 +42,10 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  * @author   <a href="mailto:chenglong.du@ozstrategy.com">Chenglong Du</a>
  * @version  05/17/2016 18:44
  */
+@ComponentScan("org.wang.sms.model")
 @Configuration
-
-// @EnableJpaRepositories("org.wang.sms.repository")
-// @EnableTransactionManagement(proxyTargetClass = true)
+@EnableJpaRepositories("org.wang.sms.repository")
+@EnableTransactionManagement(proxyTargetClass = true)
 @PropertySource("classpath:application.properties")
 public class DbConfig {
   //~ Static fields/initializers ---------------------------------------------------------------------------------------

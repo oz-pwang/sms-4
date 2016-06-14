@@ -2,6 +2,7 @@ package org.wang.sms.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import org.wang.sms.model.Admin;
@@ -13,17 +14,8 @@ import org.wang.sms.model.Admin;
  * @author   <a href="mailto:chenglong.du@ozstrategy.com">Chenglong Du</a>
  * @version  06/13/2016 14:41
  */
-@Repository public interface AdminDao extends JpaRepository {
+@Repository public interface AdminDao extends CrudRepository<Admin,Integer> {
   //~ Methods ----------------------------------------------------------------------------------------------------------
-
-  /**
-   * find.
-   *
-   * @param   id  Integer
-   *
-   * @return  Admin
-   */
-  Admin find(Integer id);
 
   //~ ------------------------------------------------------------------------------------------------------------------
 
@@ -35,5 +27,5 @@ import org.wang.sms.model.Admin;
    *
    * @return  Admin
    */
-  Admin find(String username, String password);
+  Admin findByNameAndPassWord(String username, String password);
 }

@@ -2,27 +2,17 @@ package org.wang.sms.service;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
-import org.springframework.stereotype.Service;
-
 import org.wang.sms.model.Teacher;
-import org.wang.sms.repository.TeacherDao;
 
 
 /**
  * Created by Yang Wang on 16/3/4.
  *
  * @author   <a href="mailto:chenglong.du@ozstrategy.com">Chenglong Du</a>
- * @version  06/13/2016 14:40
+ * @version  06/13/2016 15:16
  */
-@Service public class TeacherService {
-  //~ Instance fields --------------------------------------------------------------------------------------------------
-
-  @Autowired private TeacherDao teacherDao;
-
+public interface TeacherService {
   //~ Methods ----------------------------------------------------------------------------------------------------------
-
 
   /**
    * add.
@@ -31,9 +21,7 @@ import org.wang.sms.repository.TeacherDao;
    *
    * @return  Integer
    */
-  public Integer add(Teacher teacher) {
-    return teacherDao.add(teacher);
-  }
+  Integer save(Teacher teacher);
 
   //~ ------------------------------------------------------------------------------------------------------------------
 
@@ -44,9 +32,7 @@ import org.wang.sms.repository.TeacherDao;
    *
    * @return  Teacher
    */
-  public Teacher find(Integer id) {
-    return teacherDao.find(id);
-  }
+  Teacher find(Integer id);
 
   //~ ------------------------------------------------------------------------------------------------------------------
 
@@ -58,9 +44,7 @@ import org.wang.sms.repository.TeacherDao;
    *
    * @return  Teacher
    */
-  public Teacher find(String username, String password) {
-    return teacherDao.find(username, password);
-  }
+  Teacher findByNameAndPassWord(String username, String password);
 
   //~ ------------------------------------------------------------------------------------------------------------------
 
@@ -69,30 +53,8 @@ import org.wang.sms.repository.TeacherDao;
    *
    * @return  List
    */
-  public List<Teacher> list() {
-    return teacherDao.list();
-  }
+  List<Teacher> findAll();
 
   //~ ------------------------------------------------------------------------------------------------------------------
 
-
-  /**
-   * setter method for teacher dao.
-   *
-   * @param  teacherDao  TeacherDao
-   */
-  public void setTeacherDao(TeacherDao teacherDao) {
-    this.teacherDao = teacherDao;
-  }
-
-  //~ ------------------------------------------------------------------------------------------------------------------
-
-  /**
-   * update.
-   *
-   * @param  teacher  Teacher
-   */
-  public void update(Teacher teacher) {
-    teacherDao.update(teacher);
-  }
-} // end class TeacherService
+} // end interface TeacherService
