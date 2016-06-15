@@ -35,7 +35,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
    */
   @Bean public InternalResourceViewResolver viewResolver() {
     InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-    resolver.setPrefix("WEB-INF/pages/");
+    resolver.setPrefix("/WEB-INF/pages/");
     resolver.setSuffix(".jsp");
 
     return resolver;
