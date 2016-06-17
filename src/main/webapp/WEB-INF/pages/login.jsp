@@ -31,9 +31,9 @@
 
         <h1 class="text-left" >Please sign in</h1>
         <c:if test="${param.failed eq 'true'}">
-            <div class="alert alert-danger" role="alert" >
+        <div class="col-sm-10 alert alert-danger" role="alert" >
                 Username , password or role is not match.
-            </div>
+        </div>
         </c:if>
         <%--'/j_spring_security_check'--%>
         <form action="<c:url value="/login"/>" method="post" class="form-horizontal">
@@ -55,9 +55,9 @@
                 </div>
             </div>
 
-            <div class="form-group form-group-lg">
+            <div class="form-group">
 
-                <div class="col-sm-10">
+                <div class="col-sm-10 form-group-lg">
                     <input id="password" type="password" name="password" class="form-control"  placeholder="Password">
                 </div>
             </div>
