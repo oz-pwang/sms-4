@@ -65,6 +65,27 @@
   </style>
 </head>
 <body>
+<jsp:include page="/WEB-INF/common/navbar.jsp"/>
+
+<div class="row">
+  <div class="list-group" style="float:left; width: 20%">
+    <a href="/teacher/add" class="list-group-item">添加教师</a>
+    <a href="/student/add" class="list-group-item">添加学生</a>
+    <a href="/clazz/list" class="list-group-item">查看班级</a>
+    <a href="/teacher/list" class="list-group-item">查看教师</a>
+    <a href="/student/list" class="list-group-item">查看学生</a>
+  </div>
+
+  
+  <div class="well" style="float: left; width: 50%">
+
+    <h3 class="text-left">
+      ${user.name}
+    </h3>
+    每一个教师进行创建考试,录入一个班级成绩完成,教师或者学生提出的建议或者要求都在这个区域进行展示
+  </div>
+
+</div>
 
 <%--<div class="container">--%>
 <%--<div class="clearfix">&nbsp;</div>--%>
@@ -108,24 +129,7 @@
 
 <div id="container">
 
-  <div id="header">
-    <jsp:include page="/WEB-INF/common/navbar.jsp"/>
-  </div>
 
-  <div class="list-group" style="float:left; width: 20%">
-    <a href="/teacher/add" class="list-group-item">添加教师</a>
-    <a href="/student/add" class="list-group-item">添加学生</a>
-    <a href="/clazz/list" class="list-group-item">查看班级</a>
-    <a href="/teacher/list" class="list-group-item">查看教师</a>
-    <a href="/student/list" class="list-group-item">查看学生</a>
-  </div>
-
-
-  <div class="well" style="float: left; width: 50%">
-    <h3 class="text-left">
-      ${user.name}
-    </h3>
-  </div>
 
   <div id="footer">底部</div>
 

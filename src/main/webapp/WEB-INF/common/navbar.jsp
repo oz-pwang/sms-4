@@ -3,7 +3,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!-- Static navbar -->
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default" style="margin:0px">
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" href="#">PMS 1.0</a>
@@ -51,3 +51,31 @@
   </div>
   <!--/.container-fluid -->
 </nav>
+<div class="row">
+  <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+    <%--<ol class="carousel-indicators">--%>
+      <%--&lt;%&ndash;<li data-target="#carousel-example-generic" data-slide-to="0" class=""></li>&ndash;%&gt;--%>
+      <%--&lt;%&ndash;<li class="" data-target="#carousel-example-generic" data-slide-to="1"></li>&ndash;%&gt;--%>
+      <%--&lt;%&ndash;<li class="active" data-target="#carousel-example-generic" data-slide-to="2"></li>&ndash;%&gt;--%>
+    <%--</ol>--%>
+    <div class="carousel-inner" role="listbox">
+      <div class="item" style=" height:90px;">
+        <img data-holder-rendered="true" src="/img/1.jpg">
+      </div>
+      <div class="item" style=" height:90px;">
+        <img data-holder-rendered="true" src="/img/2.jpg">
+      </div>
+      <div class="item active" style=" height:90px;">
+        <img data-holder-rendered="true" src="/img/3.jpg">
+      </div>
+    </div>
+    <%--<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">--%>
+      <%--<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>--%>
+      <%--<span class="sr-only">Previous</span>--%>
+    <%--</a>--%>
+    <%--<a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">--%>
+      <%--<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>--%>
+      <%--<span class="sr-only">Next</span>--%>
+    <%--</a>--%>
+  </div>
+</div>
