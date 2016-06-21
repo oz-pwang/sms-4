@@ -91,7 +91,7 @@ public class StudentController {
 
     if (!result.hasErrors()) {
       User    student = command.toStudent();
-      Integer id      = userService.save(student);
+      Long id      = userService.save(student);
 
       return "redirect:/student/list?id=" + command.getClazzId();
     } else {

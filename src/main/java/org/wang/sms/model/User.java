@@ -13,6 +13,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
@@ -86,6 +87,13 @@ import javax.persistence.Transient;
   /** TODO: DOCUMENT ME! */
   @Column(length = 11)
   private String phoneNumber;
+
+  @JoinTable(
+    name               = "user_role",
+    joinColumns        = @JoinColumn(name = "role_id"),
+    inverseJoinColumns = @JoinColumn(name = "user_id")
+  )
+  @ManyToMany private Set<Role> roleSet;
 
   @JoinColumn(name = "subjectId")
   @ManyToOne(cascade = { CascadeType.ALL })
@@ -233,6 +241,17 @@ import javax.persistence.Transient;
    */
   public String getPhoneNumber() {
     return phoneNumber;
+  }
+
+  //~ ------------------------------------------------------------------------------------------------------------------
+
+  /**
+   * getter method for role set.
+   *
+   * @return  Set
+   */
+  public Set<Role> getRoleSet() {
+    return roleSet;
   }
 
   //~ ------------------------------------------------------------------------------------------------------------------
@@ -387,6 +406,17 @@ import javax.persistence.Transient;
    */
   public void setPhoneNumber(String phoneNumber) {
     this.phoneNumber = phoneNumber;
+  }
+
+  //~ ------------------------------------------------------------------------------------------------------------------
+
+  /**
+   * setter method for role set.
+   *
+   * @param  roleSet  Set
+   */
+  public void setRoleSet(Set<Role> roleSet) {
+    this.roleSet = roleSet;
   }
 
   //~ ------------------------------------------------------------------------------------------------------------------

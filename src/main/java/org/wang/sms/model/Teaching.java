@@ -4,6 +4,9 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 
 
@@ -14,9 +17,18 @@ import javax.persistence.JoinColumn;
  * @version  06/21/2016 15:08
  */
 @Entity public class Teaching implements Serializable {
+  //~ Static fields/initializers ---------------------------------------------------------------------------------------
+
+  /** Use serialVersionUID for interoperability. */
+  private static final long serialVersionUID = 8429451743983724245L;
+
   //~ Instance fields --------------------------------------------------------------------------------------------------
 
   @Column private Long clazzId;
+
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  @Id private Long id;
+
   @Column private Long subjectId;
   @Column private Long teacherId;
 
@@ -29,6 +41,17 @@ import javax.persistence.JoinColumn;
    */
   public Long getClazzId() {
     return clazzId;
+  }
+
+  //~ ------------------------------------------------------------------------------------------------------------------
+
+  /**
+   * getter method for id.
+   *
+   * @return  Long
+   */
+  public Long getId() {
+    return id;
   }
 
   //~ ------------------------------------------------------------------------------------------------------------------
@@ -62,6 +85,17 @@ import javax.persistence.JoinColumn;
    */
   public void setClazzId(Long clazzId) {
     this.clazzId = clazzId;
+  }
+
+  //~ ------------------------------------------------------------------------------------------------------------------
+
+  /**
+   * setter method for id.
+   *
+   * @param  id  Long
+   */
+  public void setId(Long id) {
+    this.id = id;
   }
 
   //~ ------------------------------------------------------------------------------------------------------------------

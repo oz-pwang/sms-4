@@ -2,7 +2,12 @@ package org.wang.sms.model;
 
 import java.io.Serializable;
 
+import java.util.Set;
+
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -15,16 +20,23 @@ import javax.persistence.ManyToMany;
  * @version  06/21/2016 15:01
  */
 @Entity public class Role implements Serializable {
+  //~ Static fields/initializers ---------------------------------------------------------------------------------------
+
+  /** Use serialVersionUID for interoperability. */
+  private static final long serialVersionUID = 8593818122449623047L;
+
   //~ Instance fields --------------------------------------------------------------------------------------------------
 
-  private Long   id;
-  private String name;
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  @Id private Long id;
+  private String   name;
+
   @JoinTable(
     name               = "user_role",
     joinColumns        = @JoinColumn(name = "user_id"),
     inverseJoinColumns = @JoinColumn(name = "role_id")
   )
-  @ManyToMany private User user;
+  @ManyToMany private Set<User> userSet;
 
   //~ Methods ----------------------------------------------------------------------------------------------------------
 
@@ -51,12 +63,12 @@ import javax.persistence.ManyToMany;
   //~ ------------------------------------------------------------------------------------------------------------------
 
   /**
-   * getter method for user.
+   * getter method for user set.
    *
-   * @return  User
+   * @return  Set
    */
-  public User getUser() {
-    return user;
+  public Set<User> getUserSet() {
+    return userSet;
   }
 
   //~ ------------------------------------------------------------------------------------------------------------------
@@ -84,11 +96,13 @@ import javax.persistence.ManyToMany;
   //~ ------------------------------------------------------------------------------------------------------------------
 
   /**
-   * setter method for user.
+   * setter method for user set.
    *
-   * @param  user  User
+   * @param  userSet  Set
    */
-  public void setUser(User user) {
-    this.user = user;
+  public void setUserSet(Set<User> userSet) {
+    this.userSet = userSet;
   }
+
+
 } // end class Role

@@ -116,7 +116,7 @@ public class TeacherController {
 
     if (!result.hasErrors()) {
       User    teacher = command.toTeacher();
-      Integer id      = userService.save(teacher);
+      Long id      = userService.save(teacher);
 
       return "redirect:/teacher/list?id=" + id;
     } else {
