@@ -63,7 +63,7 @@ import javax.persistence.Transient;
   @Column private String gender = "male";
 
   @GeneratedValue(strategy = GenerationType.AUTO)
-  @Id private Integer id;
+  @Id private Long id;
 
   /** TODO: DOCUMENT ME! */
   @Column(length = 18)
@@ -187,7 +187,7 @@ import javax.persistence.Transient;
    *
    * @return  Integer
    */
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
@@ -341,7 +341,7 @@ import javax.persistence.Transient;
    *
    * @param  id  Integer
    */
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 

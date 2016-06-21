@@ -25,14 +25,14 @@ public class ExaminationCommand {
 
   //~ Instance fields --------------------------------------------------------------------------------------------------
 
-  private List<Integer> clazzIdList;
+  private List<Long>    clazzIdList;
   private List<Clazz>   clazzList     = new ArrayList<Clazz>();
   private String        createDate;
   private String        creator;
-  private Integer       id;
+  private Long          id;
   private String        name;
   private String        startDate;
-  private List<Integer> subjectIdList = new ArrayList<Integer>();
+  private List<Long>    subjectIdList;
   private List<Subject> subjectList;
 
   //~ Constructors -----------------------------------------------------------------------------------------------------
@@ -67,7 +67,7 @@ public class ExaminationCommand {
    *
    * @return  List
    */
-  public List<Integer> getClazzIdList() {
+  public List<Long> getClazzIdList() {
     return clazzIdList;
   }
 
@@ -111,7 +111,7 @@ public class ExaminationCommand {
    *
    * @return  Integer
    */
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
@@ -144,7 +144,7 @@ public class ExaminationCommand {
    *
    * @return  List
    */
-  public List<Integer> getSubjectIdList() {
+  public List<Long> getSubjectIdList() {
     return subjectIdList;
   }
 
@@ -166,7 +166,7 @@ public class ExaminationCommand {
    *
    * @param  clazzIdList  List
    */
-  public void setClazzIdList(List<Integer> clazzIdList) {
+  public void setClazzIdList(List<Long> clazzIdList) {
     this.clazzIdList = clazzIdList;
   }
 
@@ -210,7 +210,7 @@ public class ExaminationCommand {
    *
    * @param  id  Integer
    */
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
@@ -243,7 +243,7 @@ public class ExaminationCommand {
    *
    * @param  subjectIdList  List
    */
-  public void setSubjectIdList(List<Integer> subjectIdList) {
+  public void setSubjectIdList(List<Long> subjectIdList) {
     this.subjectIdList = subjectIdList;
   }
 

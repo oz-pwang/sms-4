@@ -12,10 +12,10 @@ import org.wang.sms.model.Clazz;
 public class ClazzCommand {
   //~ Instance fields --------------------------------------------------------------------------------------------------
 
-  private String  headTeacher;
-  private Integer id;
-  private String  name;
-  private String  size;
+  private String headTeacher;
+  private Long   id;
+  private String name;
+  private String size;
 
   //~ Constructors -----------------------------------------------------------------------------------------------------
 
@@ -57,7 +57,7 @@ public class ClazzCommand {
    *
    * @return  Integer
    */
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
@@ -101,7 +101,7 @@ public class ClazzCommand {
    *
    * @param  id  Integer
    */
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 

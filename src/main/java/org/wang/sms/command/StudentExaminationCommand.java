@@ -22,7 +22,7 @@ public class StudentExaminationCommand {
 
   private String creator;
 
-  private Integer id;
+  private Long id;
 
   private String name;
 
@@ -31,7 +31,6 @@ public class StudentExaminationCommand {
   private String startDate;
 
   //~ Constructors -----------------------------------------------------------------------------------------------------
-
 
   /**
    * Creates a new StudentExaminationCommand object.
@@ -91,7 +90,7 @@ public class StudentExaminationCommand {
    *
    * @return  Integer
    */
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
@@ -157,7 +156,7 @@ public class StudentExaminationCommand {
    *
    * @param  id  Integer
    */
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 

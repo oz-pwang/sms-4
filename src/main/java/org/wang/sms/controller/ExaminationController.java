@@ -51,7 +51,6 @@ public class ExaminationController {
 
   //~ Methods ----------------------------------------------------------------------------------------------------------
 
-
   /**
    * add.
    *
@@ -78,7 +77,6 @@ public class ExaminationController {
 
   //~ ------------------------------------------------------------------------------------------------------------------
 
-
   /**
    * add.
    *
@@ -94,24 +92,24 @@ public class ExaminationController {
     value  = "/add",
     method = RequestMethod.POST
   )
-  public String add(HttpServletRequest request, HttpServletResponse response, Integer id, Model model,
+  public String add(HttpServletRequest request, HttpServletResponse response, Long id, Model model,
     ExaminationCommand command) {
-    User teacher       = userService.findOne(id);
-    Examination   examination   = command.toExamination();
-    List<Integer> subjectIdList = command.getSubjectIdList();
-    List<Integer> clazzIdList   = command.getClazzIdList();
-    Set<User>  studentSet    = new LinkedHashSet<User>();
+    User        teacher       = userService.findOne(id);
+    Examination examination   = command.toExamination();
+    List<Long>  subjectIdList = command.getSubjectIdList();
+    List<Long>  clazzIdList   = command.getClazzIdList();
+    Set<User>   studentSet    = new LinkedHashSet<User>();
 
     Set<Subject> subjectSet = new HashSet<Subject>();
     Set<Clazz>   clazzSet   = new HashSet<Clazz>();
 
-    for (Integer clazzId : clazzIdList) {
+    for (Long clazzId : clazzIdList) {
       Clazz clazz = clazzService.findOne(clazzId);
       studentSet.addAll(clazz.getStudentSet());
       clazzSet.add(clazz);
     }
 
-    for (Integer subjectId : subjectIdList) {
+    for (Long subjectId : subjectIdList) {
       Subject subject = subjectService.findOne(subjectId);
       subjectSet.add(subject);
     }

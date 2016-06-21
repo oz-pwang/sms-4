@@ -18,11 +18,11 @@ public class TeacherExaminationCommand {
 
   //~ Instance fields --------------------------------------------------------------------------------------------------
 
-  private String  achievementStatus;
-  private String  createDate;
-  private String  examinationStatus;
-  private Integer id;
-  private String  name;
+  private String achievementStatus;
+  private String createDate;
+  private String examinationStatus;
+  private Long   id;
+  private String name;
 
   //~ Constructors -----------------------------------------------------------------------------------------------------
 
@@ -87,7 +87,7 @@ public class TeacherExaminationCommand {
    *
    * @return  Integer
    */
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
@@ -142,7 +142,7 @@ public class TeacherExaminationCommand {
    *
    * @param  id  Integer
    */
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 

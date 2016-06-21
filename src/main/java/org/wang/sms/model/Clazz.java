@@ -38,7 +38,7 @@ import javax.persistence.OneToOne;
   private User headTeacher;
 
   @GeneratedValue(strategy = GenerationType.AUTO)
-  @Id private Integer id;
+  @Id private Long id;
 
   @Column private String name;
 
@@ -86,7 +86,7 @@ import javax.persistence.OneToOne;
    *
    * @return  Integer
    */
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
@@ -170,7 +170,7 @@ import javax.persistence.OneToOne;
    *
    * @param  id  Integer
    */
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 

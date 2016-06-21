@@ -33,8 +33,8 @@ import org.wang.sms.service.UserService;
 public class ClazzController {
   //~ Instance fields --------------------------------------------------------------------------------------------------
 
-  @Autowired private ClazzService   clazzService;
-  @Autowired private UserService userService;
+  @Autowired private ClazzService clazzService;
+  @Autowired private UserService  userService;
 
   //~ Methods ----------------------------------------------------------------------------------------------------------
 
@@ -52,8 +52,8 @@ public class ClazzController {
     value  = "/info",
     method = RequestMethod.GET
   )
-  public String info(HttpServletRequest request, HttpServletResponse response, Integer id, Model model) {
-    Clazz         clazz       = clazzService.findOne(id);
+  public String info(HttpServletRequest request, HttpServletResponse response, Long id, Model model) {
+    Clazz      clazz       = clazzService.findOne(id);
     List<User> studentList = userService.findStudentByClazzId(id);
     model.addAttribute("clazz", new ClazzCommand(clazz));
     model.addAttribute("studentList", studentList);

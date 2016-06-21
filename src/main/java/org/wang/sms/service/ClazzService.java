@@ -15,20 +15,20 @@ public interface ClazzService {
   //~ Methods ----------------------------------------------------------------------------------------------------------
 
   /**
+   * list.
+   *
+   * @return  List
+   */
+  List<Clazz> findAll();
+
+  //~ ------------------------------------------------------------------------------------------------------------------
+
+  /**
    * find.
    *
    * @param   id  Integer
    *
    * @return  Clazz
    */
-  Clazz findOne(Integer id);
-
-  //~ ------------------------------------------------------------------------------------------------------------------
-
-  /**
-   * list.
-   *
-   * @return  List
-   */
-  List<Clazz> findAll();
+  Clazz findOne(Long id);
 } // end interface ClazzService

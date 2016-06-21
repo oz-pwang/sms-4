@@ -15,5 +15,5 @@ import org.wang.sms.model.Clazz;
  * @author   <a href="mailto:chenglong.du@ozstrategy.com">Chenglong Du</a>
  * @version  06/13/2016 14:41
  */
-@Repository public interface ClazzDao extends CrudRepository<Clazz,Integer> {
+@Repository public interface ClazzDao extends CrudRepository<Clazz,Long> {
 }

@@ -25,11 +25,11 @@ public class TeacherCommand extends BaseCommand {
 
   //~ Instance fields --------------------------------------------------------------------------------------------------
 
-  private Integer clazzId;
+  private Long clazzId;
 
   private String clazzName;
 
-  private Integer subjectId;
+  private Long subjectId;
 
   private String subjectName;
 
@@ -75,7 +75,7 @@ public class TeacherCommand extends BaseCommand {
    *
    * @return  Integer
    */
-  public Integer getClazzId() {
+  public Long getClazzId() {
     return clazzId;
   }
 
@@ -97,7 +97,7 @@ public class TeacherCommand extends BaseCommand {
    *
    * @return  Integer
    */
-  public Integer getSubjectId() {
+  public Long getSubjectId() {
     return subjectId;
   }
 
@@ -119,7 +119,7 @@ public class TeacherCommand extends BaseCommand {
    *
    * @param  clazzId  Integer
    */
-  public void setClazzId(Integer clazzId) {
+  public void setClazzId(Long clazzId) {
     this.clazzId = clazzId;
   }
 
@@ -141,7 +141,7 @@ public class TeacherCommand extends BaseCommand {
    *
    * @param  subjectId  Integer
    */
-  public void setSubjectId(Integer subjectId) {
+  public void setSubjectId(Long subjectId) {
     this.subjectId = subjectId;
   }
 
@@ -204,7 +204,6 @@ public class TeacherCommand extends BaseCommand {
   } // end method toTeacher
 
   //~ ------------------------------------------------------------------------------------------------------------------
-
 
   /**
    * toTeacher.

@@ -19,22 +19,22 @@ public class AchievementCommand {
 
   private Examination examination = new Examination();
 
-  private Integer examinationId;
+  private Long examinationId;
 
 // 分数
   private Integer fraction;
-  private Integer id;
+  private Long    id;
 
-  private Integer studentId;
+  private Long studentId;
 
   private List<User> studentList = new ArrayList<User>();
   private String     studentName;
 
   private Subject subject = new Subject();
 
-  private Integer subjectId;
-  private User    teacher;
-  private Integer teacherId;
+  private Long subjectId;
+  private User teacher;
+  private Long teacherId;
 
   //~ Methods ----------------------------------------------------------------------------------------------------------
 
@@ -54,7 +54,7 @@ public class AchievementCommand {
    *
    * @return  Integer
    */
-  public Integer getExaminationId() {
+  public Long getExaminationId() {
     return examinationId;
   }
 
@@ -76,7 +76,7 @@ public class AchievementCommand {
    *
    * @return  Integer
    */
-  public Integer getStudentId() {
+  public Long getStudentId() {
     return studentId;
   }
 
@@ -120,7 +120,7 @@ public class AchievementCommand {
    *
    * @return  Integer
    */
-  public Integer getSubjectId() {
+  public Long getSubjectId() {
     return subjectId;
   }
 
@@ -142,7 +142,7 @@ public class AchievementCommand {
    *
    * @return  Integer
    */
-  public Integer getTeacherId() {
+  public Long getTeacherId() {
     return teacherId;
   }
 
@@ -164,7 +164,7 @@ public class AchievementCommand {
    *
    * @param  examinationId  Integer
    */
-  public void setExaminationId(Integer examinationId) {
+  public void setExaminationId(Long examinationId) {
     this.examinationId = examinationId;
   }
 
@@ -186,7 +186,7 @@ public class AchievementCommand {
    *
    * @param  studentId  Integer
    */
-  public void setStudentId(Integer studentId) {
+  public void setStudentId(Long studentId) {
     this.studentId = studentId;
   }
 
@@ -230,7 +230,7 @@ public class AchievementCommand {
    *
    * @param  subjectId  Integer
    */
-  public void setSubjectId(Integer subjectId) {
+  public void setSubjectId(Long subjectId) {
     this.subjectId = subjectId;
   }
 
@@ -252,7 +252,7 @@ public class AchievementCommand {
    *
    * @param  teacherId  Integer
    */
-  public void setTeacherId(Integer teacherId) {
+  public void setTeacherId(Long teacherId) {
     this.teacherId = teacherId;
   }
 } // end class AchievementCommand

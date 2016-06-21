@@ -27,21 +27,19 @@ import org.wang.sms.service.ClazzService;
   //~ Methods ----------------------------------------------------------------------------------------------------------
 
   /**
-   * @see  org.wang.sms.service.ClazzService#findOne(java.lang.Integer)
-   */
-  @Override public Clazz findOne(Integer id) {
-    return clazzDao.findOne(id);
-  }
-
-  //~ ------------------------------------------------------------------------------------------------------------------
-
-  //~ ------------------------------------------------------------------------------------------------------------------
-
-  /**
    * @see  org.wang.sms.service.ClazzService#findAll()
    */
   @Override public List<Clazz> findAll() {
     return (List<Clazz>) clazzDao.findAll();
+  }
+
+  //~ ------------------------------------------------------------------------------------------------------------------
+
+  /**
+   * @see  org.wang.sms.service.ClazzService#findOne(java.lang.Long)
+   */
+  @Override public Clazz findOne(Long id) {
+    return clazzDao.findOne(id);
   }
 
   //~ ------------------------------------------------------------------------------------------------------------------

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
 import org.springframework.web.bind.annotation.RequestMapping;
+
 import org.wang.sms.model.User;
 import org.wang.sms.service.UserService;
 
@@ -40,7 +41,7 @@ public class AdminController {
    * @return  String
    */
   @RequestMapping(value = "/menu")
-  public String menu(HttpServletRequest request, HttpServletResponse response, Integer id, Model model) {
+  public String menu(HttpServletRequest request, HttpServletResponse response, Long id, Model model) {
     User admin = userService.findOne(id);
     model.addAttribute("user", admin);
 

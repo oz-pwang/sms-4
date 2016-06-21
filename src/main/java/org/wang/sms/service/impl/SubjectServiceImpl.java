@@ -27,10 +27,10 @@ import org.wang.sms.service.SubjectService;
   //~ Methods ----------------------------------------------------------------------------------------------------------
 
   /**
-   * @see  org.wang.sms.service.SubjectService#findOne(java.lang.Integer)
+   * @see  org.wang.sms.service.SubjectService#findAll()
    */
-  @Override public Subject findOne(Integer id) {
-    return subjectDao.findOne(id);
+  @Override public List<Subject> findAll() {
+    return (List<Subject>) subjectDao.findAll();
   }
 
   //~ ------------------------------------------------------------------------------------------------------------------
@@ -45,10 +45,10 @@ import org.wang.sms.service.SubjectService;
   //~ ------------------------------------------------------------------------------------------------------------------
 
   /**
-   * @see  org.wang.sms.service.SubjectService#findAll()
+   * @see  org.wang.sms.service.SubjectService#findOne(java.lang.Long)
    */
-  @Override public List<Subject> findAll() {
-    return (List<Subject>) subjectDao.findAll();
+  @Override public Subject findOne(Long id) {
+    return subjectDao.findOne(id);
   }
 
   //~ ------------------------------------------------------------------------------------------------------------------

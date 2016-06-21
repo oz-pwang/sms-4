@@ -37,7 +37,7 @@ import javax.persistence.OneToMany;
   @JoinColumn @ManyToMany private Set<Examination> examinationSet = new HashSet<Examination>();
 
   @GeneratedValue(strategy = GenerationType.AUTO)
-  @Id private Integer id;
+  @Id private Long id;
 
   @Column private String name;
 
@@ -70,7 +70,7 @@ import javax.persistence.OneToMany;
    *
    * @return  Integer
    */
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
@@ -114,7 +114,7 @@ import javax.persistence.OneToMany;
    *
    * @param  id  Integer
    */
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 

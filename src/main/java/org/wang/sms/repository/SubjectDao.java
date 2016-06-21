@@ -15,7 +15,7 @@ import org.wang.sms.model.Subject;
  * @author   <a href="mailto:chenglong.du@ozstrategy.com">Chenglong Du</a>
  * @version  06/13/2016 14:41
  */
-@Repository public interface SubjectDao extends CrudRepository<Subject,Integer> {
+@Repository public interface SubjectDao extends CrudRepository<Subject, Long> {
   //~ Methods ----------------------------------------------------------------------------------------------------------
 
   /**
@@ -26,7 +26,5 @@ import org.wang.sms.model.Subject;
    * @return  Subject
    */
   Subject findByName(String name);
-
-  //~ ------------------------------------------------------------------------------------------------------------------
 
 } // end interface SubjectDao

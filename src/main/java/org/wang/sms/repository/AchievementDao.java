@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
-
 import org.springframework.data.repository.query.Param;
+
 import org.springframework.stereotype.Repository;
 
 import org.wang.sms.model.Achievement;
@@ -18,16 +18,16 @@ import org.wang.sms.model.Achievement;
  * @author   <a href="mailto:chenglong.du@ozstrategy.com">Chenglong Du</a>
  * @version  06/13/2016 14:41
  */
-@Repository public interface AchievementDao extends CrudRepository<Achievement, Integer> {
+@Repository public interface AchievementDao extends CrudRepository<Achievement, Long> {
   //~ Methods ----------------------------------------------------------------------------------------------------------
 
   /**
    * getter method for by examination id.
    *
-   * @param   examinationId  Integer
+   * @param   examinationId  Long
    *
    * @return  List
    */
   @Query("from Achievement as a where a.examination.id=examinationId")
-  List<Achievement> findAchievementsByExaminationId(Integer examinationId);
+  List<Achievement> findAchievementsByExaminationId(Long examinationId);
 }

@@ -45,8 +45,8 @@ public class AchievementController {
   @Autowired private ClazzService clazzService;
 
   @Autowired private ExaminationService examinationService;
-  @Autowired private UserService userService;
-  @Autowired private SubjectService subjectService;
+  @Autowired private SubjectService     subjectService;
+  @Autowired private UserService        userService;
 
   //~ Methods ----------------------------------------------------------------------------------------------------------
 
@@ -94,14 +94,14 @@ public class AchievementController {
     method = RequestMethod.GET
   )
   public String add(HttpServletRequest request, HttpServletResponse response, Model model) {
-    Integer examinationId = Integer.valueOf(request.getParameter("eid"));
-    Integer teacherId     = Integer.valueOf(request.getParameter("tid"));
+    Long examinationId = Long.valueOf(request.getParameter("eid"));
+    Long teacherId     = Long.valueOf(request.getParameter("tid"));
 
     AchievementCommand command     = new AchievementCommand();
     Examination        examination = examinationService.findOne(examinationId);
-    User teacher     = userService.findOne(teacherId);
+    User               teacher     = userService.findOne(teacherId);
     Clazz              clazz       = teacher.getClazz();
-    List<User>      studentList = userService.findStudentByClazzId(clazz.getId());
+    List<User>         studentList = userService.findStudentByClazzId(clazz.getId());
 
     Subject subject = teacher.getSubject();
 

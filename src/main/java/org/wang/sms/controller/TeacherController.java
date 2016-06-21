@@ -1,12 +1,22 @@
 package org.wang.sms.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Controller;
+
 import org.springframework.ui.Model;
+
 import org.springframework.validation.BindingResult;
+
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
 import org.wang.sms.command.TeacherCommand;
 import org.wang.sms.command.TeacherExaminationCommand;
 import org.wang.sms.model.Clazz;
@@ -15,10 +25,6 @@ import org.wang.sms.model.Subject;
 import org.wang.sms.model.User;
 import org.wang.sms.service.UserService;
 import org.wang.sms.until.validator.UserValidator;
-
-import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
-import java.util.List;
 
 
 /**
@@ -31,18 +37,18 @@ import java.util.List;
 @RequestMapping(value = "/teacher")
 public class TeacherController {
   //~ Instance fields --------------------------------------------------------------------------------------------------
-//
-//  @Autowired
-//  private ClazzService clazzService;
-//
-//  @Autowired
-//  private ExaminationService examinationService;
-//
-//  @Autowired
-//  private SubjectService subjectService;
 
-  @Autowired
-  private UserService userService;
+//
+// @Autowired
+// private ClazzService clazzService;
+//
+// @Autowired
+// private ExaminationService examinationService;
+//
+// @Autowired
+// private SubjectService subjectService;
+
+  @Autowired private UserService userService;
 
 
   private UserValidator validator = new UserValidator();
@@ -77,9 +83,9 @@ public class TeacherController {
   )
   public String addTeacher(Model model) {
     List<Subject> subjectList = new ArrayList<Subject>();
-//            subjectService.findAll();
+// subjectService.findAll();
     List<Clazz>   clazzList   = new ArrayList<Clazz>();
-//            clazzService.findAll();
+// clazzService.findAll();
     model.addAttribute("subjectList", subjectList);
     model.addAttribute("clazzList", clazzList);
     model.addAttribute("command", new TeacherCommand());
@@ -88,7 +94,6 @@ public class TeacherController {
   }
 
   //~ ------------------------------------------------------------------------------------------------------------------
-
 
   /**
    * addTeacher.
@@ -110,7 +115,7 @@ public class TeacherController {
     validator.validate(command, result);
 
     if (!result.hasErrors()) {
-      User teacher = command.toTeacher();
+      User    teacher = command.toTeacher();
       Integer id      = userService.save(teacher);
 
       return "redirect:/teacher/list?id=" + id;
@@ -135,12 +140,12 @@ public class TeacherController {
     value  = "/edit",
     method = RequestMethod.GET
   )
-  public String editStudent(Integer id, Model model) {
-    User       teacher     = userService.findOne(id);
+  public String editStudent(Long id, Model model) {
+    User          teacher     = userService.findOne(id);
     List<Subject> subjectList = new ArrayList<Subject>();
-//            subjectService.findAll();
+// subjectService.findAll();
     List<Clazz>   clazzList   = new ArrayList<Clazz>();
-//            clazzService.findAll();
+// clazzService.findAll();
     model.addAttribute("subjectList", subjectList);
     model.addAttribute("clazzList", clazzList);
     model.addAttribute("command", new TeacherCommand(teacher));
@@ -175,9 +180,9 @@ public class TeacherController {
       User teacher = command.toTeacher(t);
 
       Clazz   clazz   = new Clazz();
-//              clazzService.findOne(command.getClazzId());
+// clazzService.findOne(command.getClazzId());
       Subject subject = new Subject();
-//              subjectService.findOne(command.getSubjectId());
+// subjectService.findOne(command.getSubjectId());
       teacher.setClazz(clazz);
       teacher.setSubject(subject);
 
@@ -204,9 +209,9 @@ public class TeacherController {
     value  = "/examinationList",
     method = RequestMethod.GET
   )
-  public String examinationList(Integer id, Model model) {
+  public String examinationList(Long id, Model model) {
     List<Examination>               examinationList = new ArrayList<Examination>();
-//            examinationService.findAll();
+// examinationService.findAll();
     TeacherCommand                  teacherCommand  = new TeacherCommand(userService.findOne(id));
     List<TeacherExaminationCommand> commandList     = new ArrayList<TeacherExaminationCommand>();
 
@@ -222,7 +227,6 @@ public class TeacherController {
 
   //~ ------------------------------------------------------------------------------------------------------------------
 
-
   /**
    * list.
    *
@@ -235,7 +239,7 @@ public class TeacherController {
     method = RequestMethod.GET
   )
   public String list(Model model) {
-    List<User>        teacherList        = userService.findAll();
+    List<User>           teacherList        = userService.findAll();
     List<TeacherCommand> teacherCommandList = new ArrayList<TeacherCommand>();
 
     for (User teacher : teacherList) {
@@ -263,7 +267,7 @@ public class TeacherController {
   )
   public String queryAchievement(Integer id, Model model) {
     Examination examination = new Examination();
-//            examinationService.findOne(id);
+// examinationService.findOne(id);
 // Integer clazzId = examination.getClazz().getId();
 // Clazz clazz = clazzService.find(clazzId);
 // Set<Student> studentSet = clazz.getStudentSet();
@@ -278,7 +282,6 @@ public class TeacherController {
 
   //~ ------------------------------------------------------------------------------------------------------------------
 
-
   /**
    * toStudentInfoView.
    *
@@ -292,7 +295,7 @@ public class TeacherController {
     value  = "/info",
     method = RequestMethod.GET
   )
-  public String toStudentInfoView(HttpServletRequest request, Integer id, Model model) {
+  public String toStudentInfoView(HttpServletRequest request, Long id, Model model) {
     User teacher = userService.findOne(id);
     model.addAttribute("user", new TeacherCommand(teacher));
 

@@ -15,20 +15,20 @@ public interface AchievementService {
   //~ Methods ----------------------------------------------------------------------------------------------------------
 
   /**
-   * add.
-   *
-   * @param  achievement  Achievement
-   */
-  void save(Achievement achievement);
-
-  //~ ------------------------------------------------------------------------------------------------------------------
-
-  /**
    * getter method for by examination id.
    *
    * @param   examinationId  Integer
    *
    * @return  List
    */
-  List<Achievement> getByExaminationId(Integer examinationId);
+  List<Achievement> getByExaminationId(Long examinationId);
+
+  //~ ------------------------------------------------------------------------------------------------------------------
+
+  /**
+   * add.
+   *
+   * @param  achievement  Achievement
+   */
+  void save(Achievement achievement);
 }

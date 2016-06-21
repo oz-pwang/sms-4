@@ -15,13 +15,11 @@ public interface SubjectService {
   //~ Methods ----------------------------------------------------------------------------------------------------------
 
   /**
-   * find.
+   * list.
    *
-   * @param   id  Integer
-   *
-   * @return  Subject
+   * @return  List
    */
-  Subject findOne(Integer id);
+  List<Subject> findAll();
 
   //~ ------------------------------------------------------------------------------------------------------------------
 
@@ -37,9 +35,11 @@ public interface SubjectService {
   //~ ------------------------------------------------------------------------------------------------------------------
 
   /**
-   * list.
+   * find.
    *
-   * @return  List
+   * @param   id  Integer
+   *
+   * @return  Subject
    */
-  List<Subject> findAll();
+  Subject findOne(Long id);
 } // end interface SubjectService

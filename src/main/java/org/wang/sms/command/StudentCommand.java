@@ -25,7 +25,7 @@ public class StudentCommand extends BaseCommand {
 
   //~ Instance fields --------------------------------------------------------------------------------------------------
 
-  private Integer clazzId;
+  private Long clazzId;
 
   private String clazzName;
 
@@ -67,12 +67,11 @@ public class StudentCommand extends BaseCommand {
    *
    * @return  Integer
    */
-  public Integer getClazzId() {
+  public Long getClazzId() {
     return clazzId;
   }
 
   //~ ------------------------------------------------------------------------------------------------------------------
-
 
   /**
    * getter method for clazz name.
@@ -90,7 +89,7 @@ public class StudentCommand extends BaseCommand {
    *
    * @param  clazzId  Integer
    */
-  public void setClazzId(Integer clazzId) {
+  public void setClazzId(Long clazzId) {
     this.clazzId = clazzId;
   }
 

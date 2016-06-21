@@ -26,6 +26,14 @@ import org.wang.sms.service.AchievementService;
 
   //~ Methods ----------------------------------------------------------------------------------------------------------
 
+  /**
+   * @see  org.wang.sms.service.AchievementService#getByExaminationId(java.lang.Long)
+   */
+  @Override public List<Achievement> getByExaminationId(Long examinationId) {
+    return achievementDao.findAchievementsByExaminationId(examinationId);
+  }
+
+  //~ ------------------------------------------------------------------------------------------------------------------
 
   /**
    * @see  org.wang.sms.service.AchievementService#save(org.wang.sms.model.Achievement)
@@ -35,16 +43,6 @@ import org.wang.sms.service.AchievementService;
   }
 
   //~ ------------------------------------------------------------------------------------------------------------------
-
-  /**
-   * @see  org.wang.sms.service.AchievementService#getByExaminationId(java.lang.Integer)
-   */
-  @Override public List<Achievement> getByExaminationId(Integer examinationId) {
-    return achievementDao.findAchievementsByExaminationId(examinationId);
-  }
-
-  //~ ------------------------------------------------------------------------------------------------------------------
-
 
   /**
    * setter method for achievement dao.

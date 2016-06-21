@@ -32,7 +32,7 @@ public class BaseCommand {
   protected String gender = "male";
 
   /** TODO: DOCUMENT ME! */
-  protected Integer id;
+  protected Long id;
 
   /** TODO: DOCUMENT ME! */
   protected String IDCardNumber;
@@ -100,7 +100,7 @@ public class BaseCommand {
    *
    * @return  Integer
    */
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
@@ -210,7 +210,7 @@ public class BaseCommand {
    *
    * @param  id  Integer
    */
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 

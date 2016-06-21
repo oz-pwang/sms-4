@@ -16,17 +16,17 @@ import org.wang.sms.model.Examination;
  * @author   <a href="mailto:chenglong.du@ozstrategy.com">Chenglong Du</a>
  * @version  06/13/2016 14:41
  */
-@Repository public interface ExaminationDao extends CrudRepository<Examination,Integer> {
+@Repository public interface ExaminationDao extends CrudRepository<Examination, Long> {
   //~ Methods ----------------------------------------------------------------------------------------------------------
 
   /**
    * findByClazzId.
    *
-   * @param   clazzId  Integer
+   * @param   clazzId  Long
    *
    * @return  List
    */
   @Query("select distinct e from Examination e left join e.clazzSet c where c.id = :clazzId")
-  List<Examination> findExaminationByClazzId(Integer clazzId);
+  List<Examination> findExaminationByClazzId(Long clazzId);
 
 } // end interface ExaminationDao

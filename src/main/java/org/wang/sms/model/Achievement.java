@@ -37,7 +37,7 @@ import javax.persistence.ManyToOne;
   private Integer             fraction;
 
   @GeneratedValue(strategy = GenerationType.AUTO)
-  @Id private Integer id;
+  @Id private Long id;
 
   @JoinColumn(name = "studentId")
   @ManyToOne(cascade = { CascadeType.ALL })
@@ -78,7 +78,7 @@ import javax.persistence.ManyToOne;
    *
    * @return  Integer
    */
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
@@ -139,7 +139,7 @@ import javax.persistence.ManyToOne;
    *
    * @param  id  Integer
    */
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 

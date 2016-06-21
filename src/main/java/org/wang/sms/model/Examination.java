@@ -54,7 +54,7 @@ import javax.persistence.OneToMany;
   @Column private String examinationStatus;
 
   @GeneratedValue(strategy = GenerationType.AUTO)
-  @Id private Integer id;
+  @Id private Long id;
 
   @Column private String name;
 
@@ -65,9 +65,9 @@ import javax.persistence.OneToMany;
   @JoinColumn @OneToMany private Set<User> studentSet = new LinkedHashSet<User>();
 
   @JoinTable(
-    name               = "user_role",
+    name               = "user_subject",
     joinColumns        = @JoinColumn(name = "user_id"),
-    inverseJoinColumns = @JoinColumn(name = "role_id")
+    inverseJoinColumns = @JoinColumn(name = "subject_id")
   )
 // 每次考试有多个科目
   @ManyToMany private Set<Subject> subjectSet = new LinkedHashSet<Subject>();
@@ -151,7 +151,7 @@ import javax.persistence.OneToMany;
    *
    * @return  Integer
    */
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
@@ -295,7 +295,7 @@ import javax.persistence.OneToMany;
    *
    * @param  id  Integer
    */
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 

@@ -15,22 +15,11 @@ public interface ExaminationService {
   //~ Methods ----------------------------------------------------------------------------------------------------------
 
   /**
-   * add.
+   * list.
    *
-   * @param  examination  Examination
+   * @return  List
    */
-  void save(Examination examination);
-
-  //~ ------------------------------------------------------------------------------------------------------------------
-
-  /**
-   * find.
-   *
-   * @param   id  Integer
-   *
-   * @return  Examination
-   */
-  Examination findOne(Integer id);
+  List<Examination> findAll();
 
   //~ ------------------------------------------------------------------------------------------------------------------
 
@@ -41,14 +30,25 @@ public interface ExaminationService {
    *
    * @return  List
    */
-  List<Examination> findExaminationByClazzId(Integer clazzId);
+  List<Examination> findExaminationByClazzId(Long clazzId);
 
   //~ ------------------------------------------------------------------------------------------------------------------
 
   /**
-   * list.
+   * find.
    *
-   * @return  List
+   * @param   id  Integer
+   *
+   * @return  Examination
    */
-  List<Examination> findAll();
+  Examination findOne(Long id);
+
+  //~ ------------------------------------------------------------------------------------------------------------------
+
+  /**
+   * add.
+   *
+   * @param  examination  Examination
+   */
+  void save(Examination examination);
 } // end interface ExaminationService

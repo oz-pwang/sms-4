@@ -42,7 +42,7 @@ public interface UserService {
    *
    * @return  Student
    */
-  User findOne(Integer id);
+  User findOne(Long id);
 
   //~ ------------------------------------------------------------------------------------------------------------------
 
@@ -53,7 +53,7 @@ public interface UserService {
    *
    * @return  List
    */
-  List<User> findStudentByClazzId(Integer id);
+  List<User> findStudentByClazzId(Long id);
 
   //~ ------------------------------------------------------------------------------------------------------------------
 
@@ -64,7 +64,7 @@ public interface UserService {
    *
    * @return  Integer
    */
-  Integer save(User student);
+  Long save(User student);
 
 
 } // end interface UserService

@@ -30,37 +30,37 @@ import org.wang.sms.service.ExaminationService;
   //~ Methods ----------------------------------------------------------------------------------------------------------
 
   /**
-   * @see  org.wang.sms.service.ExaminationService#save(org.wang.sms.model.Examination)
+   * @see  org.wang.sms.service.ExaminationService#()
    */
-  @Override public void save(Examination examination) {
-    examinationDao.save(examination);
+  @Override public List<Examination> findAll() {
+    return (List<Examination>) examinationDao.findAll();
   }
 
   //~ ------------------------------------------------------------------------------------------------------------------
 
   /**
-   * @see  org.wang.sms.service.ExaminationService#findOne(java.lang.Integer)
+   * @see  org.wang.sms.service.ExaminationService#findExaminationByClazzId(java.lang.Long)
    */
-  @Override public Examination findOne(Integer id) {
-    return examinationDao.findOne(id);
-  }
-
-  //~ ------------------------------------------------------------------------------------------------------------------
-
-  /**
-   * @see  org.wang.sms.service.ExaminationService#findExaminationByClazzId(java.lang.Integer)
-   */
-  @Override public List<Examination> findExaminationByClazzId(Integer clazzId) {
+  @Override public List<Examination> findExaminationByClazzId(Long clazzId) {
     return examinationDao.findExaminationByClazzId(clazzId);
   }
 
   //~ ------------------------------------------------------------------------------------------------------------------
 
   /**
-   * @see  org.wang.sms.service.ExaminationService#list()
+   * @see  org.wang.sms.service.ExaminationService#findOne(java.lang.Long)
    */
-  @Override public List<Examination> findAll() {
-    return (List<Examination>) examinationDao.findAll();
+  @Override public Examination findOne(Long id) {
+    return examinationDao.findOne(id);
+  }
+
+  //~ ------------------------------------------------------------------------------------------------------------------
+
+  /**
+   * @see  org.wang.sms.service.ExaminationService#save(org.wang.sms.model.Examination)
+   */
+  @Override public void save(Examination examination) {
+    examinationDao.save(examination);
   }
 
   //~ ------------------------------------------------------------------------------------------------------------------
