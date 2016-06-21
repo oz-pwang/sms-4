@@ -10,9 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import org.wang.sms.model.Admin;
-import org.wang.sms.service.AdminService;
+import org.wang.sms.model.User;
+import org.wang.sms.service.UserService;
 
 
 /**
@@ -26,7 +25,7 @@ import org.wang.sms.service.AdminService;
 public class AdminController {
   //~ Instance fields --------------------------------------------------------------------------------------------------
 
-  @Autowired private AdminService adminService;
+  @Autowired private UserService userService;
 
   //~ Methods ----------------------------------------------------------------------------------------------------------
 
@@ -42,7 +41,7 @@ public class AdminController {
    */
   @RequestMapping(value = "/menu")
   public String menu(HttpServletRequest request, HttpServletResponse response, Integer id, Model model) {
-    Admin admin = adminService.findOne(id);
+    User admin = userService.findOne(id);
     model.addAttribute("user", admin);
 
     return "/admin/menu";

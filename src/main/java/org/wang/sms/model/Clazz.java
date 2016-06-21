@@ -23,6 +23,11 @@ import javax.persistence.OneToOne;
  * @version  06/13/2016 14:42
  */
 @Entity public class Clazz implements Serializable {
+  //~ Static fields/initializers ---------------------------------------------------------------------------------------
+
+  /** Use serialVersionUID for interoperability. */
+  private static final long serialVersionUID = -3720683688781994444L;
+
   //~ Instance fields --------------------------------------------------------------------------------------------------
 
   @JoinColumn @OneToMany private Set<Examination> examinationSet = new HashSet<Examination>();
@@ -30,7 +35,7 @@ import javax.persistence.OneToOne;
   @JoinColumn(name = "teacherId")
   @OneToOne(cascade = { CascadeType.ALL })
 // 班主任
-  private Teacher headTeacher;
+  private User headTeacher;
 
   @GeneratedValue(strategy = GenerationType.AUTO)
   @Id private Integer id;
@@ -40,11 +45,11 @@ import javax.persistence.OneToOne;
 
   @JoinColumn @OneToMany
 // 当前班级拥有的所有学生
-  private Set<Student>                                     studentSet;
+  private Set<User>                                     studentSet;
 
   @JoinColumn @OneToMany
 // 所有的任课 老师（ 多个科目   不同的老师）
-  private Set<Teacher> teacherSet = new HashSet<Teacher>();
+  private Set<User> teacherSet = new HashSet<User>();
 
   //~ Methods ----------------------------------------------------------------------------------------------------------
 
@@ -62,13 +67,19 @@ import javax.persistence.OneToOne;
   /**
    * getter method for head teacher.
    *
-   * @return  Teacher
+   * @return  User
    */
-  public Teacher getHeadTeacher() {
+  public User getHeadTeacher() {
     return headTeacher;
   }
 
   //~ ------------------------------------------------------------------------------------------------------------------
+
+  /**
+   * getter method for head teacher.
+   *
+   * @return  Teacher
+   */
 
   /**
    * getter method for id.
@@ -97,7 +108,7 @@ import javax.persistence.OneToOne;
    *
    * @return  Set
    */
-  public Set<Student> getStudentSet() {
+  public Set<User> getStudentSet() {
     return studentSet;
   }
 
@@ -108,11 +119,23 @@ import javax.persistence.OneToOne;
    *
    * @return  Set
    */
-  public Set<Teacher> getTeacherSet() {
+  public Set<User> getTeacherSet() {
     return teacherSet;
   }
 
   //~ ------------------------------------------------------------------------------------------------------------------
+
+  /**
+   * getter method for student set.
+   *
+   * @param  examinationSet  Set
+   */
+
+  /**
+   * getter method for teacher set.
+   *
+   * @param  examinationSet  Set
+   */
 
   /**
    * setter method for examination set.
@@ -128,13 +151,19 @@ import javax.persistence.OneToOne;
   /**
    * setter method for head teacher.
    *
-   * @param  headTeacher  Teacher
+   * @param  headTeacher  User
    */
-  public void setHeadTeacher(Teacher headTeacher) {
+  public void setHeadTeacher(User headTeacher) {
     this.headTeacher = headTeacher;
   }
 
   //~ ------------------------------------------------------------------------------------------------------------------
+
+  /**
+   * setter method for head teacher.
+   *
+   * @param  id  headTeacher Teacher
+   */
 
   /**
    * setter method for id.
@@ -163,7 +192,7 @@ import javax.persistence.OneToOne;
    *
    * @param  studentSet  Set
    */
-  public void setStudentSet(Set<Student> studentSet) {
+  public void setStudentSet(Set<User> studentSet) {
     this.studentSet = studentSet;
   }
 
@@ -174,7 +203,20 @@ import javax.persistence.OneToOne;
    *
    * @param  teacherSet  Set
    */
-  public void setTeacherSet(Set<Teacher> teacherSet) {
+  public void setTeacherSet(Set<User> teacherSet) {
     this.teacherSet = teacherSet;
   }
+
+  /**
+   * setter method for student set.
+   *
+   * @param  studentSet  Set
+   */
+
+  /**
+   * setter method for teacher set.
+   *
+   * @param  teacherSet  Set
+   */
+
 } // end class Clazz

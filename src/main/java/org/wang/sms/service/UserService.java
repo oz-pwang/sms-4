@@ -2,37 +2,24 @@ package org.wang.sms.service;
 
 import java.util.List;
 
-import org.wang.sms.model.Student;
+import org.wang.sms.model.User;
 
 
 /**
- * Created by Yang Wang on 16/3/4.
+ * Created by ozintel06 on 16/6/21.
  *
  * @author   <a href="mailto:chenglong.du@ozstrategy.com">Chenglong Du</a>
- * @version  06/13/2016 15:16
+ * @version  06/21/2016 11:00
  */
-public interface StudentService {
+public interface UserService {
   //~ Methods ----------------------------------------------------------------------------------------------------------
 
   /**
-   * add.
+   * list.
    *
-   * @param   student  Student
-   *
-   * @return  Integer
+   * @return  List
    */
-  Integer save(Student student);
-
-  //~ ------------------------------------------------------------------------------------------------------------------
-
-  /**
-   * find.
-   *
-   * @param   id  Integer
-   *
-   * @return  Student
-   */
-  Student findOne(Integer id);
+  List<User> findAll();
 
   //~ ------------------------------------------------------------------------------------------------------------------
 
@@ -44,7 +31,18 @@ public interface StudentService {
    *
    * @return  Student
    */
-  Student findByNameAndPassWord(String username, String password);
+  User findByNameAndPassWord(String username, String password);
+
+  //~ ------------------------------------------------------------------------------------------------------------------
+
+  /**
+   * find.
+   *
+   * @param   id  Integer
+   *
+   * @return  Student
+   */
+  User findOne(Integer id);
 
   //~ ------------------------------------------------------------------------------------------------------------------
 
@@ -55,17 +53,18 @@ public interface StudentService {
    *
    * @return  List
    */
-  List<Student> findStudentByClazzId(Integer id);
+  List<User> findStudentByClazzId(Integer id);
 
   //~ ------------------------------------------------------------------------------------------------------------------
 
   /**
-   * list.
+   * add.
    *
-   * @return  List
+   * @param   student  Student
+   *
+   * @return  Integer
    */
-  List<Student> findAll();
+  Integer save(User student);
 
 
-
-} // end interface StudentService
+} // end interface UserService

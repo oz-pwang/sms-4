@@ -20,15 +20,13 @@ import org.wang.sms.command.AchievementCommand;
 import org.wang.sms.model.Achievement;
 import org.wang.sms.model.Clazz;
 import org.wang.sms.model.Examination;
-import org.wang.sms.model.Student;
 import org.wang.sms.model.Subject;
-import org.wang.sms.model.Teacher;
+import org.wang.sms.model.User;
 import org.wang.sms.service.AchievementService;
 import org.wang.sms.service.ClazzService;
 import org.wang.sms.service.ExaminationService;
-import org.wang.sms.service.StudentService;
 import org.wang.sms.service.SubjectService;
-import org.wang.sms.service.TeacherService;
+import org.wang.sms.service.UserService;
 
 
 /**
@@ -47,12 +45,8 @@ public class AchievementController {
   @Autowired private ClazzService clazzService;
 
   @Autowired private ExaminationService examinationService;
-
-  @Autowired private StudentService studentService;
-
+  @Autowired private UserService userService;
   @Autowired private SubjectService subjectService;
-
-  @Autowired private TeacherService teacherService;
 
   //~ Methods ----------------------------------------------------------------------------------------------------------
 
@@ -74,7 +68,7 @@ public class AchievementController {
     achievement.setFraction(command.getFraction());
     achievement.setExamination(examinationService.findOne(command.getExaminationId()));
     achievement.setSubject(subjectService.findOne(command.getSubjectId()));
-    achievement.setStudent(studentService.findOne(command.getStudentId()));
+    achievement.setStudent(userService.findOne(command.getStudentId()));
 
 
     achievementService.save(achievement);
@@ -105,9 +99,9 @@ public class AchievementController {
 
     AchievementCommand command     = new AchievementCommand();
     Examination        examination = examinationService.findOne(examinationId);
-    Teacher            teacher     = teacherService.find(teacherId);
+    User teacher     = userService.findOne(teacherId);
     Clazz              clazz       = teacher.getClazz();
-    List<Student>      studentList = studentService.findStudentByClazzId(clazz.getId());
+    List<User>      studentList = userService.findStudentByClazzId(clazz.getId());
 
     Subject subject = teacher.getSubject();
 

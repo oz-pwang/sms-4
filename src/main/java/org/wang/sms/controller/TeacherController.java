@@ -12,8 +12,8 @@ import org.wang.sms.command.TeacherExaminationCommand;
 import org.wang.sms.model.Clazz;
 import org.wang.sms.model.Examination;
 import org.wang.sms.model.Subject;
-import org.wang.sms.model.Teacher;
-import org.wang.sms.service.TeacherService;
+import org.wang.sms.model.User;
+import org.wang.sms.service.UserService;
 import org.wang.sms.until.validator.UserValidator;
 
 import javax.servlet.http.HttpServletRequest;
@@ -42,7 +42,7 @@ public class TeacherController {
 //  private SubjectService subjectService;
 
   @Autowired
-  private TeacherService teacherService;
+  private UserService userService;
 
 
   private UserValidator validator = new UserValidator();
@@ -110,8 +110,8 @@ public class TeacherController {
     validator.validate(command, result);
 
     if (!result.hasErrors()) {
-      Teacher teacher = command.toTeacher();
-      Integer id      = teacherService.save(teacher);
+      User teacher = command.toTeacher();
+      Integer id      = userService.save(teacher);
 
       return "redirect:/teacher/list?id=" + id;
     } else {
@@ -136,7 +136,7 @@ public class TeacherController {
     method = RequestMethod.GET
   )
   public String editStudent(Integer id, Model model) {
-    Teacher       teacher     = teacherService.find(id);
+    User       teacher     = userService.findOne(id);
     List<Subject> subjectList = new ArrayList<Subject>();
 //            subjectService.findAll();
     List<Clazz>   clazzList   = new ArrayList<Clazz>();
@@ -170,9 +170,9 @@ public class TeacherController {
     validator.validate(command, result);
 
     if (!result.hasErrors()) {
-      Teacher t = teacherService.find(command.getId());
+      User t = userService.findOne(command.getId());
 
-      Teacher teacher = command.toTeacher(t);
+      User teacher = command.toTeacher(t);
 
       Clazz   clazz   = new Clazz();
 //              clazzService.findOne(command.getClazzId());
@@ -181,7 +181,7 @@ public class TeacherController {
       teacher.setClazz(clazz);
       teacher.setSubject(subject);
 
-      teacherService.save(teacher);
+      userService.save(teacher);
 
       return "redirect:/teacher/info?id=" + teacher.getId();
     } else {
@@ -207,7 +207,7 @@ public class TeacherController {
   public String examinationList(Integer id, Model model) {
     List<Examination>               examinationList = new ArrayList<Examination>();
 //            examinationService.findAll();
-    TeacherCommand                  teacherCommand  = new TeacherCommand(teacherService.find(id));
+    TeacherCommand                  teacherCommand  = new TeacherCommand(userService.findOne(id));
     List<TeacherExaminationCommand> commandList     = new ArrayList<TeacherExaminationCommand>();
 
     for (Examination examination : examinationList) {
@@ -235,10 +235,10 @@ public class TeacherController {
     method = RequestMethod.GET
   )
   public String list(Model model) {
-    List<Teacher>        teacherList        = teacherService.findAll();
+    List<User>        teacherList        = userService.findAll();
     List<TeacherCommand> teacherCommandList = new ArrayList<TeacherCommand>();
 
-    for (Teacher teacher : teacherList) {
+    for (User teacher : teacherList) {
       teacherCommandList.add(new TeacherCommand(teacher));
     }
 
@@ -293,7 +293,7 @@ public class TeacherController {
     method = RequestMethod.GET
   )
   public String toStudentInfoView(HttpServletRequest request, Integer id, Model model) {
-    Teacher teacher = teacherService.find(id);
+    User teacher = userService.findOne(id);
     model.addAttribute("user", new TeacherCommand(teacher));
 
     return "teacher/info";

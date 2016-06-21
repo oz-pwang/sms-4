@@ -26,6 +26,11 @@ import javax.persistence.OneToMany;
  * @version  06/13/2016 14:42
  */
 @Entity public class Examination implements Serializable {
+  //~ Static fields/initializers ---------------------------------------------------------------------------------------
+
+  /** Use serialVersionUID for interoperability. */
+  private static final long serialVersionUID = -6003607511793012344L;
+
   //~ Instance fields --------------------------------------------------------------------------------------------------
 
   @JoinColumn @OneToMany
@@ -44,7 +49,7 @@ import javax.persistence.OneToMany;
   // 当前考试的创建者
   @JoinColumn(name = "teacherId")
   @ManyToOne(cascade = { CascadeType.ALL })
-  private Teacher creator;
+  private User creator;
 
   @Column private String examinationStatus;
 
@@ -57,7 +62,7 @@ import javax.persistence.OneToMany;
 
   @Column private Date startDate;
 
-  @JoinColumn @OneToMany private Set<Student> studentSet = new LinkedHashSet<Student>();
+  @JoinColumn @OneToMany private Set<User> studentSet = new LinkedHashSet<User>();
 
   @JoinTable(
     name               = "user_role",
@@ -116,13 +121,19 @@ import javax.persistence.OneToMany;
   /**
    * getter method for creator.
    *
-   * @return  Teacher
+   * @return  User
    */
-  public Teacher getCreator() {
+  public User getCreator() {
     return creator;
   }
 
   //~ ------------------------------------------------------------------------------------------------------------------
+
+  /**
+   * getter method for creator.
+   *
+   * @return  Teacher
+   */
 
   /**
    * getter method for examination status.
@@ -184,11 +195,17 @@ import javax.persistence.OneToMany;
    *
    * @return  Set
    */
-  public Set<Student> getStudentSet() {
+  public Set<User> getStudentSet() {
     return studentSet;
   }
 
   //~ ------------------------------------------------------------------------------------------------------------------
+
+  /**
+   * getter method for student set.
+   *
+   * @return  Set
+   */
 
   /**
    * getter method for subject set.
@@ -248,13 +265,19 @@ import javax.persistence.OneToMany;
   /**
    * setter method for creator.
    *
-   * @param  creator  Teacher
+   * @param  creator  User
    */
-  public void setCreator(Teacher creator) {
+  public void setCreator(User creator) {
     this.creator = creator;
   }
 
   //~ ------------------------------------------------------------------------------------------------------------------
+
+  /**
+   * setter method for creator.
+   *
+   * @param  examinationStatus  creator Teacher
+   */
 
   /**
    * setter method for examination status.
@@ -316,11 +339,17 @@ import javax.persistence.OneToMany;
    *
    * @param  studentSet  Set
    */
-  public void setStudentSet(Set<Student> studentSet) {
+  public void setStudentSet(Set<User> studentSet) {
     this.studentSet = studentSet;
   }
 
   //~ ------------------------------------------------------------------------------------------------------------------
+
+  /**
+   * setter method for student set.
+   *
+   * @param  subjectSet  Set
+   */
 
   /**
    * setter method for subject set.

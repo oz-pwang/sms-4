@@ -10,12 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import org.wang.sms.command.LoginFormCommand;
-import org.wang.sms.model.Admin;
-import org.wang.sms.model.Student;
-import org.wang.sms.model.Teacher;
-import org.wang.sms.service.AdminService;
-import org.wang.sms.service.StudentService;
-import org.wang.sms.service.TeacherService;
+import org.wang.sms.model.User;
+import org.wang.sms.service.UserService;
 import org.wang.sms.until.Constants;
 
 
@@ -28,13 +24,7 @@ import org.wang.sms.until.Constants;
 @Controller public class LoginAction {
   //~ Instance fields --------------------------------------------------------------------------------------------------
 
-  @Autowired private AdminService adminService;
-
-  /** TODO: DOCUMENT ME! */
-  @Autowired private StudentService studentService;
-
-  /** TODO: DOCUMENT ME! */
-  @Autowired private TeacherService teacherService;
+  @Autowired private UserService userService;
 
   //~ Methods ----------------------------------------------------------------------------------------------------------
 
@@ -52,7 +42,7 @@ import org.wang.sms.until.Constants;
   )
   public String login(HttpServletRequest request, LoginFormCommand loginForm) {
     if ("STUDENT".equals(loginForm.getRole())) {
-      Student student = studentService.findByNameAndPassWord(loginForm.getUsername(), loginForm.getPassword());
+      User student = userService.findByNameAndPassWord(loginForm.getUsername(), loginForm.getPassword());
 
       if (student != null) {
         request.getSession().setAttribute(Constants.USER_NAME_KEY, student.getName());
@@ -65,7 +55,7 @@ import org.wang.sms.until.Constants;
     }
 
     if ("TEACHER".equals(loginForm.getRole())) {
-      Teacher teacher = teacherService.findByNameAndPassWord(loginForm.getUsername(), loginForm.getPassword());
+      User teacher = userService.findByNameAndPassWord(loginForm.getUsername(), loginForm.getPassword());
 
       if (teacher != null) {
         request.getSession().setAttribute(Constants.USER_NAME_KEY, teacher.getName());
@@ -78,7 +68,7 @@ import org.wang.sms.until.Constants;
     }
 
     if ("ADMIN".equals(loginForm.getRole())) {
-      Admin admin = adminService.findByNameAndPassWord(loginForm.getUsername(), loginForm.getPassword());
+      User admin = userService.findByNameAndPassWord(loginForm.getUsername(), loginForm.getPassword());
 
       if (admin != null) {
         return "redirect:/admin/menu?id=" + admin.getId();

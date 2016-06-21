@@ -9,7 +9,7 @@ import org.springframework.util.StringUtils;
 
 import org.wang.sms.model.Clazz;
 import org.wang.sms.model.Subject;
-import org.wang.sms.model.Teacher;
+import org.wang.sms.model.User;
 
 
 /**
@@ -45,7 +45,7 @@ public class TeacherCommand extends BaseCommand {
    *
    * @param  teacher  Teacher
    */
-  public TeacherCommand(Teacher teacher) {
+  public TeacherCommand(User teacher) {
     this.setId(teacher.getId());
     this.setName(teacher.getName());
     this.setAge(teacher.getAge());
@@ -163,8 +163,8 @@ public class TeacherCommand extends BaseCommand {
    *
    * @return  Teacher
    */
-  public Teacher toTeacher() {
-    Teacher teacher = new Teacher();
+  public User toTeacher() {
+    User teacher = new User();
 
     teacher.setId(this.getId());
     teacher.setName(this.getName());
@@ -213,7 +213,7 @@ public class TeacherCommand extends BaseCommand {
    *
    * @return  Teacher
    */
-  public Teacher toTeacher(Teacher t) {
+  public User toTeacher(User t) {
     t.setId(this.getId());
     t.setName(this.getName());
     t.setIDCardNumber(this.getIDCardNumber());

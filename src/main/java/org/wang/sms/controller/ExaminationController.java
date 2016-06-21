@@ -22,13 +22,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.wang.sms.command.ExaminationCommand;
 import org.wang.sms.model.Clazz;
 import org.wang.sms.model.Examination;
-import org.wang.sms.model.Student;
 import org.wang.sms.model.Subject;
-import org.wang.sms.model.Teacher;
+import org.wang.sms.model.User;
 import org.wang.sms.service.ClazzService;
 import org.wang.sms.service.ExaminationService;
 import org.wang.sms.service.SubjectService;
-import org.wang.sms.service.TeacherService;
+import org.wang.sms.service.UserService;
 
 
 /**
@@ -48,7 +47,7 @@ public class ExaminationController {
 
   @Autowired private SubjectService subjectService;
 
-  @Autowired private TeacherService teacherService;
+  @Autowired private UserService userService;
 
   //~ Methods ----------------------------------------------------------------------------------------------------------
 
@@ -97,11 +96,11 @@ public class ExaminationController {
   )
   public String add(HttpServletRequest request, HttpServletResponse response, Integer id, Model model,
     ExaminationCommand command) {
-    Teacher       teacher       = teacherService.find(id);
+    User teacher       = userService.findOne(id);
     Examination   examination   = command.toExamination();
     List<Integer> subjectIdList = command.getSubjectIdList();
     List<Integer> clazzIdList   = command.getClazzIdList();
-    Set<Student>  studentSet    = new LinkedHashSet<Student>();
+    Set<User>  studentSet    = new LinkedHashSet<User>();
 
     Set<Subject> subjectSet = new HashSet<Subject>();
     Set<Clazz>   clazzSet   = new HashSet<Clazz>();

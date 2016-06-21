@@ -4,9 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.wang.sms.model.Examination;
-import org.wang.sms.model.Student;
 import org.wang.sms.model.Subject;
-import org.wang.sms.model.Teacher;
+import org.wang.sms.model.User;
 
 
 /**
@@ -28,17 +27,16 @@ public class AchievementCommand {
 
   private Integer studentId;
 
-  private List<Student> studentList = new ArrayList<Student>();
-  private String        studentName;
+  private List<User> studentList = new ArrayList<User>();
+  private String     studentName;
 
   private Subject subject = new Subject();
 
   private Integer subjectId;
-  private Teacher teacher;
+  private User    teacher;
   private Integer teacherId;
 
   //~ Methods ----------------------------------------------------------------------------------------------------------
-
 
   /**
    * getter method for examination.
@@ -61,7 +59,6 @@ public class AchievementCommand {
   }
 
   //~ ------------------------------------------------------------------------------------------------------------------
-
 
   /**
    * getter method for fraction.
@@ -90,7 +87,7 @@ public class AchievementCommand {
    *
    * @return  List
    */
-  public List<Student> getStudentList() {
+  public List<User> getStudentList() {
     return studentList;
   }
 
@@ -134,7 +131,7 @@ public class AchievementCommand {
    *
    * @return  Teacher
    */
-  public Teacher getTeacher() {
+  public User getTeacher() {
     return teacher;
   }
 
@@ -200,7 +197,7 @@ public class AchievementCommand {
    *
    * @param  studentList  List
    */
-  public void setStudentList(List<Student> studentList) {
+  public void setStudentList(List<User> studentList) {
     this.studentList = studentList;
   }
 
@@ -244,7 +241,7 @@ public class AchievementCommand {
    *
    * @param  teacher  Teacher
    */
-  public void setTeacher(Teacher teacher) {
+  public void setTeacher(User teacher) {
     this.teacher = teacher;
   }
 

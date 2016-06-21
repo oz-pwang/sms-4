@@ -17,9 +17,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import org.wang.sms.command.ClazzCommand;
 import org.wang.sms.model.Clazz;
-import org.wang.sms.model.Student;
+import org.wang.sms.model.User;
 import org.wang.sms.service.ClazzService;
-import org.wang.sms.service.StudentService;
+import org.wang.sms.service.UserService;
 
 
 /**
@@ -34,7 +34,7 @@ public class ClazzController {
   //~ Instance fields --------------------------------------------------------------------------------------------------
 
   @Autowired private ClazzService   clazzService;
-  @Autowired private StudentService studentService;
+  @Autowired private UserService userService;
 
   //~ Methods ----------------------------------------------------------------------------------------------------------
 
@@ -54,7 +54,7 @@ public class ClazzController {
   )
   public String info(HttpServletRequest request, HttpServletResponse response, Integer id, Model model) {
     Clazz         clazz       = clazzService.findOne(id);
-    List<Student> studentList = studentService.findStudentByClazzId(id);
+    List<User> studentList = userService.findStudentByClazzId(id);
     model.addAttribute("clazz", new ClazzCommand(clazz));
     model.addAttribute("studentList", studentList);
 

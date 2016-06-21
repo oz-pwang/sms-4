@@ -8,7 +8,7 @@ import java.util.Date;
 import org.springframework.util.StringUtils;
 
 import org.wang.sms.model.Clazz;
-import org.wang.sms.model.Student;
+import org.wang.sms.model.User;
 
 
 /**
@@ -41,7 +41,7 @@ public class StudentCommand extends BaseCommand {
    *
    * @param  student  Student
    */
-  public StudentCommand(Student student) {
+  public StudentCommand(User student) {
     this.setId(student.getId());
     this.setName(student.getName());
     this.setAge(student.getAge());
@@ -112,8 +112,8 @@ public class StudentCommand extends BaseCommand {
    *
    * @return  Student
    */
-  public Student toStudent() {
-    Student student = new Student();
+  public User toStudent() {
+    User student = new User();
 
     student.setId(this.getId());
     student.setName(this.getName());
@@ -154,7 +154,7 @@ public class StudentCommand extends BaseCommand {
    *
    * @return  Student
    */
-  public Student toStudent(Student s) {
+  public User toStudent(User s) {
     s.setId(this.getId());
     s.setName(this.getName());
     s.setIDCardNumber(this.getIDCardNumber());

@@ -19,6 +19,11 @@ import javax.persistence.ManyToOne;
  * @version  06/13/2016 14:43
  */
 @Entity public class Achievement implements Serializable {
+  //~ Static fields/initializers ---------------------------------------------------------------------------------------
+
+  /** Use serialVersionUID for interoperability. */
+  private static final long serialVersionUID = -3364843216838342572L;
+
   //~ Instance fields --------------------------------------------------------------------------------------------------
 
   @JoinColumn(name = "examinationId")
@@ -37,7 +42,7 @@ import javax.persistence.ManyToOne;
   @JoinColumn(name = "studentId")
   @ManyToOne(cascade = { CascadeType.ALL })
 // 这是哪个学生的成绩
-  private Student student;
+  private User student;
 
   @JoinColumn(name = "subjectId")
   @ManyToOne(cascade = { CascadeType.ALL })
@@ -45,7 +50,6 @@ import javax.persistence.ManyToOne;
   private Subject subject;
 
   //~ Methods ----------------------------------------------------------------------------------------------------------
-
 
   /**
    * getter method for examination.
@@ -69,7 +73,6 @@ import javax.persistence.ManyToOne;
 
   //~ ------------------------------------------------------------------------------------------------------------------
 
-
   /**
    * getter method for id.
    *
@@ -82,15 +85,21 @@ import javax.persistence.ManyToOne;
   //~ ------------------------------------------------------------------------------------------------------------------
 
   /**
-   * getter method for student.
+   * setter method for student.
    *
-   * @return  Student
+   * @return  setter method for student.
    */
-  public Student getStudent() {
+  public User getStudent() {
     return student;
   }
 
   //~ ------------------------------------------------------------------------------------------------------------------
+
+  /**
+   * getter method for student.
+   *
+   * @return  Student
+   */
 
   /**
    * getter method for subject.
@@ -139,9 +148,9 @@ import javax.persistence.ManyToOne;
   /**
    * setter method for student.
    *
-   * @param  student  Student
+   * @param  student  User
    */
-  public void setStudent(Student student) {
+  public void setStudent(User student) {
     this.student = student;
   }
 

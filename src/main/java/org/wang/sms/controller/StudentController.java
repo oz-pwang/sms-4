@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.wang.sms.command.StudentCommand;
 import org.wang.sms.command.StudentExaminationCommand;
-import org.wang.sms.model.Student;
-import org.wang.sms.service.StudentService;
+import org.wang.sms.model.User;
+import org.wang.sms.service.UserService;
 import org.wang.sms.until.validator.UserValidator;
 
 import java.util.ArrayList;
@@ -37,7 +37,7 @@ public class StudentController {
 //  @Autowired
 //  private ExaminationService examinationService;
   @Autowired
-  private StudentService     studentService;
+  private UserService userService;
 
   private UserValidator validator = new UserValidator();
 
@@ -85,8 +85,8 @@ public class StudentController {
     validator.validate(command, result);
 
     if (!result.hasErrors()) {
-      Student student = command.toStudent();
-      Integer id      = studentService.save(student);
+      User student = command.toStudent();
+      Integer id      = userService.save(student);
 
       return "redirect:/student/list?id=" + command.getClazzId();
     } else {
@@ -109,7 +109,7 @@ public class StudentController {
     method = RequestMethod.GET
   )
   public String editStudent(Integer id, Model model) {
-    Student student = studentService.findOne(id);
+    User student = userService.findOne(id);
     model.addAttribute("command", new StudentCommand(student));
 
     return "student/edit";
@@ -137,14 +137,14 @@ public class StudentController {
     validator.validate(command, result);
 
     if (!result.hasErrors()) {
-      Student s = studentService.findOne(command.getId());
+      User s = userService.findOne(command.getId());
 
-      Student student = command.toStudent(s);
+      User student = command.toStudent(s);
 //
 //      Clazz clazz = clazzService.findOne(command.getClazzId());
 //      student.setClazz(clazz);
 
-      studentService.save(student);
+      userService.save(student);
 
       model.addAttribute("command", new StudentCommand(student));
 
@@ -170,11 +170,11 @@ public class StudentController {
   )
   public String list(Integer id, Model model) {
     if (id != null) {
-      List<Student> studentList = studentService.findStudentByClazzId(id);
+      List<User> studentList = userService.findStudentByClazzId(id);
 
       List<StudentCommand> studentCommandList = new ArrayList<StudentCommand>();
 
-      for (Student student : studentList) {
+      for (User student : studentList) {
         studentCommandList.add(new StudentCommand(student));
       }
 
@@ -183,10 +183,10 @@ public class StudentController {
       return "student/list";
     }
 
-    List<Student>        studentList        = studentService.findAll();
+    List<User>        studentList        = userService.findAll();
     List<StudentCommand> studentCommandList = new ArrayList<StudentCommand>();
 
-    for (Student student : studentList) {
+    for (User student : studentList) {
       studentCommandList.add(new StudentCommand(student));
     }
 
@@ -210,7 +210,7 @@ public class StudentController {
     method = RequestMethod.GET
   )
   public String toStudentInfoView(Integer id, Model model) {
-    Student student = studentService.findOne(id);
+    User student = userService.findOne(id);
     model.addAttribute("user", new StudentCommand(student));
 
     return "student/info";
@@ -233,7 +233,7 @@ public class StudentController {
   public String viewResults(Integer id, Model model) {
     List<StudentExaminationCommand> commandList = new ArrayList<StudentExaminationCommand>();
 
-    Student student = studentService.findOne(id);
+    User student = userService.findOne(id);
     Integer clazzId = student.getClazz().getId();
 //
 //    List<Examination> examinationList = examinationService.findExaminationByClazzId(clazzId);
