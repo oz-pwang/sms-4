@@ -37,15 +37,6 @@
         </c:if>
         <%--'/j_spring_security_check'--%>
         <form action="<c:url value="/login"/>" method="post" class="form-horizontal">
-            <div class="form-group">
-                <div class="col-sm-10" >
-                    <select class="form-control" style="width: 100%" name="role" id="role">
-                        <option value="STUDENT">Student</option>
-                        <option value="TEACHER">Teacher</option>
-                        <option value="ADMIN">Admin</option>
-                    </select>
-                </div>
-            </div>
             <%--元素透明度--%>
             <%--style="opacity: 0.4;"--%>
             <div class="form-group" >
