@@ -61,7 +61,7 @@ import javax.persistence.Transient;
   private Set<Examination>                                     examinationSet = new LinkedHashSet<Examination>();
 
   /** TODO: DOCUMENT ME! */
-  @Column private String gender = "male";
+  @Column private String gender;
 
   @GeneratedValue(strategy = GenerationType.AUTO)
   @Id private Long id;

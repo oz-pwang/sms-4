@@ -72,7 +72,7 @@
           <label for="gender" class="col-sm-2 control-label">Gender</label>
 
           <div class="col-sm-10">
-            <div class="radio">
+            <div class="radio" onselect="true">
               <label>
                 <form:radiobutton path="gender" value="male"/>男
               </label>

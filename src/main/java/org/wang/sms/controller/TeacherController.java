@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import org.wang.sms.command.TeacherCommand;
+import org.wang.sms.command.UserCommand;
 import org.wang.sms.command.TeacherExaminationCommand;
 import org.wang.sms.model.Clazz;
 import org.wang.sms.model.Examination;
@@ -88,7 +88,7 @@ public class TeacherController {
 // clazzService.findAll();
     model.addAttribute("subjectList", subjectList);
     model.addAttribute("clazzList", clazzList);
-    model.addAttribute("command", new TeacherCommand());
+    model.addAttribute("command", new UserCommand());
 
     return "teacher/add";
   }
@@ -98,7 +98,7 @@ public class TeacherController {
   /**
    * addTeacher.
    *
-   * @param   command  TeacherCommand
+   * @param   command  UserCommand
    * @param   result   BindingResult
    * @param   model    Model
    *
@@ -110,7 +110,7 @@ public class TeacherController {
     value  = "/add",
     method = RequestMethod.POST
   )
-  public String addTeacher(@ModelAttribute("command") TeacherCommand command, BindingResult result, Model model)
+  public String addTeacher(@ModelAttribute("command") UserCommand command, BindingResult result, Model model)
     throws Exception {
     validator.validate(command, result);
 
@@ -148,7 +148,7 @@ public class TeacherController {
 // clazzService.findAll();
     model.addAttribute("subjectList", subjectList);
     model.addAttribute("clazzList", clazzList);
-    model.addAttribute("command", new TeacherCommand(teacher));
+    model.addAttribute("command", new UserCommand(teacher));
 
     return "teacher/edit";
   }
@@ -158,7 +158,7 @@ public class TeacherController {
   /**
    * editStudent.
    *
-   * @param   command  TeacherCommand
+   * @param   command  UserCommand
    * @param   result   BindingResult
    * @param   model    Model
    *
@@ -170,7 +170,7 @@ public class TeacherController {
     value  = "/edit",
     method = RequestMethod.POST
   )
-  public String editStudent(@ModelAttribute("command") TeacherCommand command, BindingResult result, Model model)
+  public String editStudent(@ModelAttribute("command") UserCommand command, BindingResult result, Model model)
     throws Exception {
     validator.validate(command, result);
 
@@ -212,7 +212,7 @@ public class TeacherController {
   public String examinationList(Long id, Model model) {
     List<Examination>               examinationList = new ArrayList<Examination>();
 // examinationService.findAll();
-    TeacherCommand                  teacherCommand  = new TeacherCommand(userService.findOne(id));
+    UserCommand                  teacherCommand  = new UserCommand(userService.findOne(id));
     List<TeacherExaminationCommand> commandList     = new ArrayList<TeacherExaminationCommand>();
 
     for (Examination examination : examinationList) {
@@ -240,10 +240,10 @@ public class TeacherController {
   )
   public String list(Model model) {
     List<User>           teacherList        = userService.findAll();
-    List<TeacherCommand> teacherCommandList = new ArrayList<TeacherCommand>();
+    List<UserCommand> teacherCommandList = new ArrayList<UserCommand>();
 
     for (User teacher : teacherList) {
-      teacherCommandList.add(new TeacherCommand(teacher));
+      teacherCommandList.add(new UserCommand(teacher));
     }
 
     model.addAttribute("users", teacherCommandList);
@@ -297,7 +297,7 @@ public class TeacherController {
   )
   public String toStudentInfoView(HttpServletRequest request, Long id, Model model) {
     User teacher = userService.findOne(id);
-    model.addAttribute("user", new TeacherCommand(teacher));
+    model.addAttribute("user", new UserCommand(teacher));
 
     return "teacher/info";
   }

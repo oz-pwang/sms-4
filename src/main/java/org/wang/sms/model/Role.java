@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -29,7 +30,11 @@ import javax.persistence.ManyToMany;
 
   @GeneratedValue(strategy = GenerationType.AUTO)
   @Id private Long id;
-  private String   name;
+
+  @Column(length = 1)
+  private String         important;
+  @Column private String name;
+
 
   @JoinTable(
     name               = "user_role",
@@ -47,6 +52,17 @@ import javax.persistence.ManyToMany;
    */
   public Long getId() {
     return id;
+  }
+
+  //~ ------------------------------------------------------------------------------------------------------------------
+
+  /**
+   * getter method for important.
+   *
+   * @return  String
+   */
+  public String getImportant() {
+    return important;
   }
 
   //~ ------------------------------------------------------------------------------------------------------------------
@@ -80,6 +96,17 @@ import javax.persistence.ManyToMany;
    */
   public void setId(Long id) {
     this.id = id;
+  }
+
+  //~ ------------------------------------------------------------------------------------------------------------------
+
+  /**
+   * setter method for important.
+   *
+   * @param  important  String
+   */
+  public void setImportant(String important) {
+    this.important = important;
   }
 
   //~ ------------------------------------------------------------------------------------------------------------------

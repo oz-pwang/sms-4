@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import org.wang.sms.command.StudentCommand;
+import org.wang.sms.command.UserCommand;
 import org.wang.sms.command.StudentExaminationCommand;
 import org.wang.sms.model.User;
 import org.wang.sms.service.UserService;
@@ -62,7 +62,7 @@ public class StudentController {
   public String addStudent(Model model) {
 // List<Clazz> clazzList = clazzService.findAll();
 //
-// model.addAttribute("command", new StudentCommand());
+// model.addAttribute("command", new UserCommand());
 // model.addAttribute("clazzList", clazzList);
 
     return "student/add";
@@ -73,7 +73,7 @@ public class StudentController {
   /**
    * addStudent.
    *
-   * @param   command  StudentCommand
+   * @param   command  UserCommand
    * @param   result   BindingResult
    * @param   model    Model
    *
@@ -85,7 +85,7 @@ public class StudentController {
     value  = "/add",
     method = RequestMethod.POST
   )
-  public String addStudent(@ModelAttribute("command") StudentCommand command, BindingResult result, Model model)
+  public String addStudent(@ModelAttribute("command") UserCommand command, BindingResult result, Model model)
     throws Exception {
     validator.validate(command, result);
 
@@ -115,7 +115,7 @@ public class StudentController {
   )
   public String editStudent(Long id, Model model) {
     User student = userService.findOne(id);
-    model.addAttribute("command", new StudentCommand(student));
+    model.addAttribute("command", new UserCommand(student));
 
     return "student/edit";
   }
@@ -125,7 +125,7 @@ public class StudentController {
   /**
    * editStudent.
    *
-   * @param   command  StudentCommand
+   * @param   command  UserCommand
    * @param   result   BindingResult
    * @param   model    Model
    *
@@ -137,7 +137,7 @@ public class StudentController {
     value  = "/edit",
     method = RequestMethod.POST
   )
-  public String editStudent(@ModelAttribute("command") StudentCommand command, BindingResult result, Model model)
+  public String editStudent(@ModelAttribute("command") UserCommand command, BindingResult result, Model model)
     throws Exception {
     validator.validate(command, result);
 
@@ -151,7 +151,7 @@ public class StudentController {
 
       userService.save(student);
 
-      model.addAttribute("command", new StudentCommand(student));
+      model.addAttribute("command", new UserCommand(student));
 
       return "redirect:/student/info?id=" + student.getId();
     }
@@ -177,10 +177,10 @@ public class StudentController {
     if (id != null) {
       List<User> studentList = userService.findStudentByClazzId(id);
 
-      List<StudentCommand> studentCommandList = new ArrayList<StudentCommand>();
+      List<UserCommand> studentCommandList = new ArrayList<UserCommand>();
 
       for (User student : studentList) {
-        studentCommandList.add(new StudentCommand(student));
+        studentCommandList.add(new UserCommand(student));
       }
 
       model.addAttribute("users", studentCommandList);
@@ -189,10 +189,10 @@ public class StudentController {
     }
 
     List<User>           studentList        = userService.findAll();
-    List<StudentCommand> studentCommandList = new ArrayList<StudentCommand>();
+    List<UserCommand> studentCommandList = new ArrayList<UserCommand>();
 
     for (User student : studentList) {
-      studentCommandList.add(new StudentCommand(student));
+      studentCommandList.add(new UserCommand(student));
     }
 
     model.addAttribute("users", studentCommandList);
@@ -216,7 +216,7 @@ public class StudentController {
   )
   public String toStudentInfoView(Long id, Model model) {
     User student = userService.findOne(id);
-    model.addAttribute("user", new StudentCommand(student));
+    model.addAttribute("user", new UserCommand(student));
 
     return "student/info";
   }
