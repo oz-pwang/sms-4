@@ -90,8 +90,8 @@ import javax.persistence.Transient;
 
   @JoinTable(
     name               = "user_role",
-    joinColumns        = @JoinColumn(name = "role_id"),
-    inverseJoinColumns = @JoinColumn(name = "user_id")
+    joinColumns        = @JoinColumn(name = "user_id"),
+    inverseJoinColumns = @JoinColumn(name = "role_id")
   )
   @ManyToMany private Set<Role> roleSet;
 

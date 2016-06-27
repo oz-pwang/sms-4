@@ -17,7 +17,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import org.wang.sms.command.UserCommand;
 import org.wang.sms.command.StudentExaminationCommand;
+import org.wang.sms.model.Clazz;
 import org.wang.sms.model.User;
+import org.wang.sms.service.AchievementService;
+import org.wang.sms.service.ClazzService;
+import org.wang.sms.service.ExaminationService;
 import org.wang.sms.service.UserService;
 import org.wang.sms.until.validator.UserValidator;
 
@@ -33,15 +37,14 @@ import org.wang.sms.until.validator.UserValidator;
 public class StudentController {
   //~ Instance fields --------------------------------------------------------------------------------------------------
 
-//
-// @Autowired
-// private AchievementService achievementService;
-//
-// @Autowired
-// private ClazzService clazzService;
-//
-// @Autowired
-// private ExaminationService examinationService;
+ @Autowired
+ private AchievementService achievementService;
+
+ @Autowired
+ private ClazzService clazzService;
+
+ @Autowired
+ private ExaminationService examinationService;
   @Autowired private UserService userService;
 
   private UserValidator validator = new UserValidator();
@@ -60,10 +63,7 @@ public class StudentController {
     method = RequestMethod.GET
   )
   public String addStudent(Model model) {
-// List<Clazz> clazzList = clazzService.findAll();
-//
-// model.addAttribute("command", new UserCommand());
-// model.addAttribute("clazzList", clazzList);
+    model.addAttribute("command", new UserCommand());
 
     return "student/add";
   }
@@ -90,7 +90,7 @@ public class StudentController {
     validator.validate(command, result);
 
     if (!result.hasErrors()) {
-      User    student = command.toStudent();
+      User    student = command.toUser();
       Long id      = userService.save(student);
 
       return "redirect:/student/list?id=" + command.getClazzId();
@@ -144,7 +144,7 @@ public class StudentController {
     if (!result.hasErrors()) {
       User s = userService.findOne(command.getId());
 
-      User student = command.toStudent(s);
+      User student = command.toUser(s);
 //
 // Clazz clazz = clazzService.findOne(command.getClazzId());
 // student.setClazz(clazz);

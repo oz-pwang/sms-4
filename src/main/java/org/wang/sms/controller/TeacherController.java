@@ -23,6 +23,9 @@ import org.wang.sms.model.Clazz;
 import org.wang.sms.model.Examination;
 import org.wang.sms.model.Subject;
 import org.wang.sms.model.User;
+import org.wang.sms.service.ClazzService;
+import org.wang.sms.service.ExaminationService;
+import org.wang.sms.service.SubjectService;
 import org.wang.sms.service.UserService;
 import org.wang.sms.until.validator.UserValidator;
 
@@ -38,15 +41,15 @@ import org.wang.sms.until.validator.UserValidator;
 public class TeacherController {
   //~ Instance fields --------------------------------------------------------------------------------------------------
 
-//
-// @Autowired
-// private ClazzService clazzService;
-//
-// @Autowired
-// private ExaminationService examinationService;
-//
-// @Autowired
-// private SubjectService subjectService;
+
+ @Autowired
+ private ClazzService clazzService;
+
+ @Autowired
+ private ExaminationService examinationService;
+
+ @Autowired
+ private SubjectService subjectService;
 
   @Autowired private UserService userService;
 
@@ -82,12 +85,8 @@ public class TeacherController {
     method = RequestMethod.GET
   )
   public String addTeacher(Model model) {
-    List<Subject> subjectList = new ArrayList<Subject>();
-// subjectService.findAll();
-    List<Clazz>   clazzList   = new ArrayList<Clazz>();
-// clazzService.findAll();
+    List<Subject> subjectList = subjectService.findAll();
     model.addAttribute("subjectList", subjectList);
-    model.addAttribute("clazzList", clazzList);
     model.addAttribute("command", new UserCommand());
 
     return "teacher/add";
@@ -115,7 +114,7 @@ public class TeacherController {
     validator.validate(command, result);
 
     if (!result.hasErrors()) {
-      User    teacher = command.toTeacher();
+      User    teacher = command.toUser();
       Long id      = userService.save(teacher);
 
       return "redirect:/teacher/list?id=" + id;
@@ -177,7 +176,7 @@ public class TeacherController {
     if (!result.hasErrors()) {
       User t = userService.findOne(command.getId());
 
-      User teacher = command.toTeacher(t);
+      User teacher = command.toUser(t);
 
       Clazz   clazz   = new Clazz();
 // clazzService.findOne(command.getClazzId());

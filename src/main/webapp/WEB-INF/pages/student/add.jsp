@@ -141,18 +141,6 @@
         <%--</div>--%>
       <%--</div>--%>
 
-      <spring:bind path="clazzId">
-        <div class="form-group ${status.error ? 'has-error' : ''}">
-          <label for="clazzId" class="col-sm-2 control-label">班级</label>
-
-          <div class="col-sm-10">
-
-            <form:select path="clazzId" items="${clazzList}" itemLabel="name" itemValue="id" cssClass="form-control"/>
-            <form:errors path="clazzId" cssClass="alert-danger" element="div"/>
-          </div>
-        </div>
-      </spring:bind>
-
       <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
           <button type="submit" class="btn btn-default">Sign in</button>

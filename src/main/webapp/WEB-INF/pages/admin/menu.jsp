@@ -67,13 +67,17 @@
 <body>
 <jsp:include page="/WEB-INF/common/navbar.jsp"/>
 
-<div class="row">
-  <div class="list-group" style="float:left; width: 20%">
-    <a href="/teacher/add" class="list-group-item">添加教师</a>
-    <a href="/student/add" class="list-group-item">添加学生</a>
-    <a href="/clazz/list" class="list-group-item">查看班级</a>
-    <a href="/teacher/list" class="list-group-item">查看教师</a>
-    <a href="/student/list" class="list-group-item">查看学生</a>
+<div class="row" style="height: 100%">
+
+  <div class="widget">
+    <div class="list-group" style="float:left; width: 20%">
+      <a href="/teacher/add" class="list-group-item">添加教师</a>
+      <a href="/student/add" class="list-group-item">添加学生</a>
+      <a href="/clazz/list" class="list-group-item">查看班级</a>
+      <a href="/teacher/list" class="list-group-item">查看教师</a>
+      <a href="/student/list" class="list-group-item">查看学生</a>
+    </div>
+
   </div>
 
   
