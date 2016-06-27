@@ -119,7 +119,7 @@ public class TeacherController {
 
       return "redirect:/teacher/list?id=" + id;
     } else {
-      return "redirect:teacher/add";
+      return "redirect:/teacher/add";
     }
 
 
