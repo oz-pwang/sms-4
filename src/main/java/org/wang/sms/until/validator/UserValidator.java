@@ -8,6 +8,7 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
 import org.wang.sms.command.BaseCommand;
+import org.wang.sms.command.UserCommand;
 
 
 /**
@@ -36,7 +37,7 @@ public class UserValidator implements Validator {
    * @see  org.springframework.validation.Validator#validate(java.lang.Object, org.springframework.validation.Errors)
    */
   @Override public void validate(Object target, Errors errors) {
-    BaseCommand user = (BaseCommand) target;
+    UserCommand user =  (UserCommand)target;
 
     if (!StringUtils.hasText(user.getName())) {
       errors.rejectValue("name", null, "Username is empty.");
