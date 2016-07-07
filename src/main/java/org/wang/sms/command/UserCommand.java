@@ -7,8 +7,6 @@ import java.util.Date;
 
 import org.springframework.util.StringUtils;
 
-import org.wang.sms.model.Clazz;
-import org.wang.sms.model.Subject;
 import org.wang.sms.model.User;
 
 
@@ -89,16 +87,6 @@ public class UserCommand {
 
     if (user.getBirthDate() != null) {
       this.setBirthDateString(sdf.format(user.getBirthDate()));
-    }
-
-    if (user.getClazz() != null) {
-      this.setClazzId(user.getClazz().getId());
-      this.setClazzName(user.getClazz().getName());
-    }
-
-    if (user.getSubject() != null) {
-      this.setSubjectName(user.getSubject().getName());
-      this.setSubjectId(user.getSubject().getId());
     }
   }
 
@@ -461,20 +449,6 @@ public class UserCommand {
 
       teacher.setBirthDate(date);
     }
-
-    if (this.getSubjectId() != null) {
-      Subject subject = new Subject();
-
-      subject.setId(this.getSubjectId());
-      teacher.setSubject(subject);
-    }
-
-    if (this.getClazzId() != null) {
-      Clazz clazz = new Clazz();
-      clazz.setId(this.getClazzId());
-      teacher.setClazz(clazz);
-    }
-
     return teacher;
   } // end method toUser
 
@@ -507,20 +481,6 @@ public class UserCommand {
 
       t.setBirthDate(date);
     }
-
-    if (this.getSubjectId() != null) {
-      Subject subject = new Subject();
-
-      subject.setId(this.getSubjectId());
-      t.setSubject(subject);
-    }
-
-    if (this.getClazzId() != null) {
-      Clazz clazz = new Clazz();
-      clazz.setId(this.getClazzId());
-      t.setClazz(clazz);
-    }
-
     return t;
   } // end method toUser
 

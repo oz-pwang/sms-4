@@ -7,7 +7,6 @@ import org.springframework.util.StringUtils;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
-import org.wang.sms.command.BaseCommand;
 import org.wang.sms.command.UserCommand;
 
 
@@ -28,7 +27,7 @@ public class UserValidator implements Validator {
    * @see  org.springframework.validation.Validator#supports(java.lang.Class)
    */
   @Override public boolean supports(Class clazz) {
-    return BaseCommand.class.equals(clazz);
+    return UserCommand.class.equals(clazz);
   }
 
   //~ ------------------------------------------------------------------------------------------------------------------
