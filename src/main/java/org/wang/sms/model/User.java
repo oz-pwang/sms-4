@@ -3,21 +3,12 @@ package org.wang.sms.model;
 import java.io.Serializable;
 
 import java.util.Date;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.MappedSuperclass;
-import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
 
@@ -35,30 +26,13 @@ import javax.persistence.Transient;
 
   //~ Instance fields --------------------------------------------------------------------------------------------------
 
-  /** TODO: DOCUMENT ME! */
-  @Column private Integer                                         age;
-  @JoinColumn @ManyToMany
-// 当前学生参加过的所有的考试
-  private Set<Examination>                                        allExams = new LinkedHashSet<Examination>();
-
-  @JoinColumn @OneToMany
-// 当前学生的所有成绩
-  private Set<Achievement>                                   allScores = new LinkedHashSet<Achievement>();
+  @Column private Integer age;
 
   /** TODO: DOCUMENT ME! */
   @Column private Date birthDate;
 
   /** TODO: DOCUMENT ME! */
   @Transient private String birthDateString;
-
-  @JoinColumn
-  @ManyToOne(cascade = { CascadeType.ALL })
-// 当前学生的所在的班级
-  private Clazz            clazz;
-
-  @JoinColumn @OneToMany
-// 教师创建的考试（多个）
-  private Set<Examination>                                     examinationSet = new LinkedHashSet<Examination>();
 
   /** TODO: DOCUMENT ME! */
   @Column private String gender;
@@ -88,18 +62,6 @@ import javax.persistence.Transient;
   @Column(length = 11)
   private String phoneNumber;
 
-  @JoinTable(
-    name               = "user_role",
-    joinColumns        = @JoinColumn(name = "user_id"),
-    inverseJoinColumns = @JoinColumn(name = "role_id")
-  )
-  @ManyToMany private Set<Role> roleSet;
-
-  @JoinColumn(name = "subjectId")
-  @ManyToOne(cascade = { CascadeType.ALL })
-// 教学科目
-  private Subject subject;
-
   //~ Methods ----------------------------------------------------------------------------------------------------------
 
   /**
@@ -109,28 +71,6 @@ import javax.persistence.Transient;
    */
   public Integer getAge() {
     return age;
-  }
-
-  //~ ------------------------------------------------------------------------------------------------------------------
-
-  /**
-   * getter method for all exams.
-   *
-   * @return  Set
-   */
-  public Set<Examination> getAllExams() {
-    return allExams;
-  }
-
-  //~ ------------------------------------------------------------------------------------------------------------------
-
-  /**
-   * getter method for all scores.
-   *
-   * @return  Set
-   */
-  public Set<Achievement> getAllScores() {
-    return allScores;
   }
 
   //~ ------------------------------------------------------------------------------------------------------------------
@@ -153,28 +93,6 @@ import javax.persistence.Transient;
    */
   public String getBirthDateString() {
     return birthDateString;
-  }
-
-  //~ ------------------------------------------------------------------------------------------------------------------
-
-  /**
-   * getter method for clazz.
-   *
-   * @return  Clazz
-   */
-  public Clazz getClazz() {
-    return clazz;
-  }
-
-  //~ ------------------------------------------------------------------------------------------------------------------
-
-  /**
-   * getter method for examination set.
-   *
-   * @return  Set
-   */
-  public Set<Examination> getExaminationSet() {
-    return examinationSet;
   }
 
   //~ ------------------------------------------------------------------------------------------------------------------
@@ -246,56 +164,12 @@ import javax.persistence.Transient;
   //~ ------------------------------------------------------------------------------------------------------------------
 
   /**
-   * getter method for role set.
-   *
-   * @return  Set
-   */
-  public Set<Role> getRoleSet() {
-    return roleSet;
-  }
-
-  //~ ------------------------------------------------------------------------------------------------------------------
-
-  /**
-   * getter method for subject.
-   *
-   * @return  Subject
-   */
-  public Subject getSubject() {
-    return subject;
-  }
-
-  //~ ------------------------------------------------------------------------------------------------------------------
-
-  /**
    * setter method for age.
    *
    * @param  age  Integer
    */
   public void setAge(Integer age) {
     this.age = age;
-  }
-
-  //~ ------------------------------------------------------------------------------------------------------------------
-
-  /**
-   * setter method for all exams.
-   *
-   * @param  allExams  Set
-   */
-  public void setAllExams(Set<Examination> allExams) {
-    this.allExams = allExams;
-  }
-
-  //~ ------------------------------------------------------------------------------------------------------------------
-
-  /**
-   * setter method for all scores.
-   *
-   * @param  allScores  Set
-   */
-  public void setAllScores(Set<Achievement> allScores) {
-    this.allScores = allScores;
   }
 
   //~ ------------------------------------------------------------------------------------------------------------------
@@ -318,28 +192,6 @@ import javax.persistence.Transient;
    */
   public void setBirthDateString(String birthDateString) {
     this.birthDateString = birthDateString;
-  }
-
-  //~ ------------------------------------------------------------------------------------------------------------------
-
-  /**
-   * setter method for clazz.
-   *
-   * @param  clazz  Clazz
-   */
-  public void setClazz(Clazz clazz) {
-    this.clazz = clazz;
-  }
-
-  //~ ------------------------------------------------------------------------------------------------------------------
-
-  /**
-   * setter method for examination set.
-   *
-   * @param  examinationSet  Set
-   */
-  public void setExaminationSet(Set<Examination> examinationSet) {
-    this.examinationSet = examinationSet;
   }
 
   //~ ------------------------------------------------------------------------------------------------------------------
@@ -408,25 +260,4 @@ import javax.persistence.Transient;
     this.phoneNumber = phoneNumber;
   }
 
-  //~ ------------------------------------------------------------------------------------------------------------------
-
-  /**
-   * setter method for role set.
-   *
-   * @param  roleSet  Set
-   */
-  public void setRoleSet(Set<Role> roleSet) {
-    this.roleSet = roleSet;
-  }
-
-  //~ ------------------------------------------------------------------------------------------------------------------
-
-  /**
-   * setter method for subject.
-   *
-   * @param  subject  Subject
-   */
-  public void setSubject(Subject subject) {
-    this.subject = subject;
-  }
 } // end class User

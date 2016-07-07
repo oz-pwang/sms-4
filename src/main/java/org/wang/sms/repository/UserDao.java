@@ -29,15 +29,4 @@ import org.wang.sms.model.User;
    */
   User findByNameAndPassWord(String username, String password);
 
-  //~ ------------------------------------------------------------------------------------------------------------------
-
-  /**
-   * findStudentByClazzId.
-   *
-   * @param   clazzId  Long
-   *
-   * @return  List
-   */
-  @Query("from User as s where s.clazz.id = clazzId")
-  List<User> findStudentByClazzId(Long clazzId);
 } // end interface UserDao
