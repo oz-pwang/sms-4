@@ -22,45 +22,5 @@ import org.wang.sms.until.Constants;
  * @version  $Revision$, $Date$
  */
 @Controller public class LoginAction {
-  //~ Instance fields --------------------------------------------------------------------------------------------------
 
-  @Autowired private UserService userService;
-
-  //~ Methods ----------------------------------------------------------------------------------------------------------
-
-  /**
-   * login.
-   *
-   * @param   request    HttpServletRequest
-   * @param   loginForm  LoginForm
-   *
-   * @return  String
-   */
-  @RequestMapping(
-    value  = "/login",
-    method = RequestMethod.POST
-  )
-  public String login(HttpServletRequest request, LoginFormCommand loginForm) {
-    User user = userService.findByNameAndPassWord(loginForm.getUsername(), loginForm.getPassword());
-    if (user != null){
-
-    }
-    return "redirect:/login?failed=true";
-  }   // end method login
-
-  //~ ------------------------------------------------------------------------------------------------------------------
-
-  /**
-   * login.
-   *
-   * @return  String
-   */
-  @RequestMapping(
-    value  = "/login",
-    method = RequestMethod.GET
-  )
-  public String toLoginView() {
-    return "login";
-  }
-
-} // end class LoginAction
+}

@@ -17,16 +17,5 @@ import org.wang.sms.model.User;
  * @version  06/21/2016 16:34
  */
 @Repository public interface UserDao extends CrudRepository<User, Long> {
-  //~ Methods ----------------------------------------------------------------------------------------------------------
 
-  /**
-   * findByNameAndPassWord.
-   *
-   * @param   username  String
-   * @param   password  String
-   *
-   * @return  User
-   */
-  User findByNameAndPassWord(String username, String password);
-
-} // end interface UserDao
+}
