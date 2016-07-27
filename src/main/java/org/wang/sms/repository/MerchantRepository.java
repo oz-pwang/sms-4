@@ -7,7 +7,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import org.springframework.stereotype.Repository;
 
-import org.wang.sms.model.User;
+import org.wang.sms.model.Merchant;
 
 
 /**
@@ -16,6 +16,6 @@ import org.wang.sms.model.User;
  * @author   <a href="mailto:chenglong.du@ozstrategy.com">Chenglong Du</a>
  * @version  06/21/2016 16:34
  */
-@Repository public interface UserDao extends CrudRepository<User, Long> {
+@Repository public interface MerchantRepository extends CrudRepository<Merchant, Long> {
 
 }

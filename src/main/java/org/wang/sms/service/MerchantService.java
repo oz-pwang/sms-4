@@ -2,7 +2,6 @@ package org.wang.sms.service;
 
 import java.util.List;
 
-import org.wang.sms.model.User;
 
 
 /**
@@ -11,5 +10,6 @@ import org.wang.sms.model.User;
  * @author   <a href="mailto:chenglong.du@ozstrategy.com">Chenglong Du</a>
  * @version  06/21/2016 11:00
  */
-public interface UserService {
+public interface MerchantService {
+
 }
