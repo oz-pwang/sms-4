@@ -23,13 +23,13 @@ import javax.persistence.ManyToOne;
   //~ Instance fields --------------------------------------------------------------------------------------------------
 
   @JoinColumn(name = "addressId")
-  @ManyToOne private Commodity address;
+  @ManyToOne private Address address;
 
   @JoinColumn(name = "commodityId")
   @ManyToOne private Commodity commodity;
 
   @JoinColumn(name = "consumerId")
-  @ManyToOne private Commodity consumer;
+  @ManyToOne private Consumer consumer;
 
   @Column(nullable = false)
   private Date createDate;
@@ -58,7 +58,7 @@ import javax.persistence.ManyToOne;
    *
    * @return  Commodity
    */
-  public Commodity getAddress() {
+  public Address getAddress() {
     return address;
   }
 
@@ -80,7 +80,7 @@ import javax.persistence.ManyToOne;
    *
    * @return  Commodity
    */
-  public Commodity getConsumer() {
+  public Consumer getConsumer() {
     return consumer;
   }
 
@@ -201,7 +201,7 @@ import javax.persistence.ManyToOne;
    *
    * @param  address  Commodity
    */
-  public void setAddress(Commodity address) {
+  public void setAddress(Address address) {
     this.address = address;
   }
 
@@ -234,7 +234,7 @@ import javax.persistence.ManyToOne;
    *
    * @param  consumer  Commodity
    */
-  public void setConsumer(Commodity consumer) {
+  public void setConsumer(Consumer consumer) {
     this.consumer = consumer;
   }
 
