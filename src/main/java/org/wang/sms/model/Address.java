@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 
 /**
@@ -16,6 +18,11 @@ import javax.persistence.Id;
  * @version  07/27/2016 21:58
  */
 @Entity public class Address implements Serializable {
+  //~ Static fields/initializers ---------------------------------------------------------------------------------------
+
+  /** Use serialVersionUID for interoperability. */
+  private static final long serialVersionUID = -8781606225475361664L;
+
   //~ Instance fields --------------------------------------------------------------------------------------------------
 
   @Column(
@@ -24,10 +31,13 @@ import javax.persistence.Id;
   )
   private String address;
 
-  @Column(nullable = false)
-  private boolean  isDefaultAddress;
+  @JoinColumn(name = "consumerId")
+  @ManyToOne private Consumer consumer;
   @GeneratedValue(strategy = GenerationType.AUTO)
-  @Id private Long id;
+  @Id private Long            id;
+
+  @Column(nullable = false)
+  private boolean isDefaultAddress;
 
   //~ Methods ----------------------------------------------------------------------------------------------------------
 
@@ -38,6 +48,17 @@ import javax.persistence.Id;
    */
   public String getAddress() {
     return address;
+  }
+
+  //~ ------------------------------------------------------------------------------------------------------------------
+
+  /**
+   * getter method for consumer.
+   *
+   * @return  Consumer
+   */
+  public Consumer getConsumer() {
+    return consumer;
   }
 
   //~ ------------------------------------------------------------------------------------------------------------------
@@ -54,7 +75,7 @@ import javax.persistence.Id;
   //~ ------------------------------------------------------------------------------------------------------------------
 
   /**
-   * getter method for isDefaultAddress.
+   * getter method for default address.
    *
    * @return  boolean
    */
@@ -76,12 +97,23 @@ import javax.persistence.Id;
   //~ ------------------------------------------------------------------------------------------------------------------
 
   /**
-   * setter method for isDefaultAddress.
+   * setter method for consumer.
    *
-   * @param  isDefaultAddress  boolean
+   * @param  consumer  Consumer
    */
-  public void setIsDefaultAddress(boolean isDefaultAddress) {
-    this.isDefaultAddress = isDefaultAddress;
+  public void setConsumer(Consumer consumer) {
+    this.consumer = consumer;
+  }
+
+  //~ ------------------------------------------------------------------------------------------------------------------
+
+  /**
+   * setter method for default address.
+   *
+   * @param  defaultAddress  boolean
+   */
+  public void setDefaultAddress(boolean defaultAddress) {
+    isDefaultAddress = defaultAddress;
   }
 
   //~ ------------------------------------------------------------------------------------------------------------------

@@ -20,6 +20,11 @@ import javax.persistence.ManyToOne;
  * @version  07/27/2016 22:17
  */
 @Entity public class Order implements Serializable {
+  //~ Static fields/initializers ---------------------------------------------------------------------------------------
+
+  /** Use serialVersionUID for interoperability. */
+  private static final long serialVersionUID = -4294610589178532064L;
+
   //~ Instance fields --------------------------------------------------------------------------------------------------
 
   @JoinColumn(name = "addressId")

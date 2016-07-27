@@ -16,6 +16,11 @@ import javax.persistence.Id;
  * @version  07/27/2016 21:59
  */
 @Entity public class Effect implements Serializable {
+  //~ Static fields/initializers ---------------------------------------------------------------------------------------
+
+  /** Use serialVersionUID for interoperability. */
+  private static final long serialVersionUID = -5099752531355558259L;
+
   //~ Instance fields --------------------------------------------------------------------------------------------------
 
   @GeneratedValue(strategy = GenerationType.AUTO)

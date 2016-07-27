@@ -16,6 +16,11 @@ import javax.persistence.Id;
  * @version  07/27/2016 21:59
  */
 @Entity public class Brand implements Serializable {
+  //~ Static fields/initializers ---------------------------------------------------------------------------------------
+
+  /** Use serialVersionUID for interoperability. */
+  private static final long serialVersionUID = -7083109822529113089L;
+
   //~ Instance fields --------------------------------------------------------------------------------------------------
 
   @GeneratedValue(strategy = GenerationType.AUTO)
@@ -29,7 +34,6 @@ import javax.persistence.Id;
 
   //~ Methods ----------------------------------------------------------------------------------------------------------
 
-
   /**
    * getter method for id.
    *
@@ -40,7 +44,6 @@ import javax.persistence.Id;
   }
 
   //~ ------------------------------------------------------------------------------------------------------------------
-
 
   /**
    * getter method for name.

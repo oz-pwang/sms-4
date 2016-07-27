@@ -23,6 +23,11 @@ import javax.persistence.ManyToOne;
  * @version  07/27/2016 21:48
  */
 @Entity public class Commodity implements Serializable {
+  //~ Static fields/initializers ---------------------------------------------------------------------------------------
+
+  /** Use serialVersionUID for interoperability. */
+  private static final long serialVersionUID = 9082039051529571936L;
+
   //~ Instance fields --------------------------------------------------------------------------------------------------
 
   @JoinColumn(name = "brandId")
@@ -39,10 +44,12 @@ import javax.persistence.ManyToOne;
   @GeneratedValue(strategy = GenerationType.AUTO)
   @Id private Long          id;
 
+  @Column private Boolean isPutaway;
+
   @JoinTable(
     name               = "Merchant_commodity",
-    joinColumns        = {@JoinColumn(name = "commodityId")},
-    inverseJoinColumns = {@JoinColumn(name = "merchantId")}
+    joinColumns        = { @JoinColumn(name = "commodityId") },
+    inverseJoinColumns = { @JoinColumn(name = "merchantId") }
   )
   @ManyToMany private Set<Merchant> merchantSet;
 
@@ -54,8 +61,6 @@ import javax.persistence.ManyToOne;
 
   @Column(nullable = false)
   private Integer price;
-
-  @Column private Boolean isPutaway;
 
   @Column private Date putawayTime;
 
@@ -152,11 +157,11 @@ import javax.persistence.ManyToOne;
   //~ ------------------------------------------------------------------------------------------------------------------
 
   /**
-   * getter method for isPutaway.
+   * getter method for putaway.
    *
    * @return  Boolean
    */
-  public Boolean getIsPutaway() {
+  public Boolean getPutaway() {
     return isPutaway;
   }
 
@@ -275,10 +280,10 @@ import javax.persistence.ManyToOne;
   /**
    * setter method for putaway.
    *
-   * @param  isPutaway  Boolean
+   * @param  putaway  Boolean
    */
-  public void setIsPutaway(Boolean isPutaway) {
-    this.isPutaway = isPutaway;
+  public void setPutaway(Boolean putaway) {
+    isPutaway = putaway;
   }
 
   //~ ------------------------------------------------------------------------------------------------------------------

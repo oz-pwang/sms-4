@@ -23,6 +23,11 @@ import javax.persistence.OneToMany;
  * @version  07/27/2016 21:48
  */
 @Entity public class Merchant implements Serializable {
+  //~ Static fields/initializers ---------------------------------------------------------------------------------------
+
+  /** Use serialVersionUID for interoperability. */
+  private static final long serialVersionUID = -8954876391070126047L;
+
   //~ Instance fields --------------------------------------------------------------------------------------------------
 
   @Column(
